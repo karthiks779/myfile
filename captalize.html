@@ -1,0 +1,38 @@
+<!doctype html>
+<html>
+<head>
+<script>
+
+function capitalise()
+ {
+  
+  var string;
+  
+  string =  document.getElementById("second").value;
+  
+
+     let res=''
+   let gh=''
+       str=string.split(' ')
+      for (let i = 0; i <str.length; i++) {
+
+
+
+   res=str[i]
+   gh+=res.charAt(0).toUpperCase()+res.slice(1)+" "
+       
+      } document.getElementById("answer").value =gh;
+}
+</script>
+</head>
+<body>
+
+
+<p>Enter a statement: <input id="second"></p>
+<button onclick="capitalise()">submit</button>
+<p>Captilaized statement= <input id="answer"></p>
+<form>
+<input type="submit" value="Reset">
+</form>
+</body>
+</html>
