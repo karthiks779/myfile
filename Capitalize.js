@@ -9,8 +9,8 @@ function capitalizeWords(str)
 
 
    res=str[i]
-   gh+=res.toUpperCase()+res.slice(1)
-       gh=gh.join(" ")
+   gh+=res.charAt(0).toUpperCase()+res.slice(1)+" "
+       
       }
 return gh
  }
