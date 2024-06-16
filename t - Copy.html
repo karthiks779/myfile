@@ -1,0 +1,46 @@
+<!doctype html>
+<html>
+<head>
+<script>
+var numOne, numTwo, sum;
+function add()
+{
+  
+  numOne = parseInt(document.getElementById("first").value);
+  numTwo = parseInt(document.getElementById("second").value);
+  sum = numTwo - numOne;
+
+  document.getElementById("answer").value = sum;
+const now = new Date();
+document.getElementById("date").value =now.toLocaleString().slice(0,10);
+document.getElementById("date1").value=now.toLocaleString().slice(0,10);
+document.getElementById("first1").value=numOne;
+document.getElementById("second1").value=numTwo;
+document.getElementById("answer1").value=sum;
+}
+localStorage.mytime ="good job,carry on";
+</script>
+</head>
+<body>
+
+<p>Date = <input type="text" id="date" name="date"></p>
+<p>Saled: <input type="text" id="first" name="first"></p>
+<p>total: <input type="text" id="second" name="second"></p>
+<button onclick="add()">Click</button>
+<p>Sum = <input type="text" id="answer" name="answer"></p> 
+<a href=t.html>"ok"</a>
+
+<a href=https://1drv.ms/u/s!Ajqvs0v5-LO-gnoBtFFqe5BXN7cR>"ok"</a>
+<h5>sending to email</h5>
+<form action="mailto:karthikkottekar@gmail.com" method="post" enctype="text/plain">
+
+
+<p>Date = <input type="text" id="date1" name="date"></p>
+<p>Saled: <input type="text" id="first1" name="first"></p>
+<p>total: <input type="text" id="second1" name="second"></p>
+<p>Sum = <input type="text" id="answer1" name="answer"></p>
+<input type="submit" value="Send">
+<input type="reset" value="Re1set">
+</form>
+</body>
+</html>
