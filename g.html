@@ -1,0 +1,38 @@
+<!doctype html>
+<html>
+<body>
+
+
+<script>
+function add()
+{
+  var numOne ;
+var num=["Hoppala","Hot Hoppala","Panipuri papad with masala","Kasuri methi"];
+var sum=[22,24,30,20];
+  numOne = document.getElementById("first").value;
+for(var i=0;i<4;i++)
+{
+ if(numOne==num[i]){
+
+  document.getElementById("answer").innerHTML = sum[i];
+ system.exit(0);
+
+
+} else
+{
+document.getElementById("answer").innerHTML="";
+}
+}
+}
+</script>
+
+
+
+
+
+<p>Saled: <input type="text" id="first" name="first"></p>
+
+<button onclick="add()">Click</button>
+<p id="answer"></p>
+</body>
+</html>
