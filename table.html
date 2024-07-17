@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+table,td{
+  border: 1px solid black;
+}
+option {
+  font-size: 30px;
+}
+</style>
+
+</head>
+<body>
+
+<label for="browser">Choose your browser from the list:</label>
+<input  list="browsers" name="browser" id="browser">
+<label for="num">Last name:</label>
+<input type="number" name="num" id="num">
+
+<datalist  id="browsers">
+  <option value="micro">
+  <option value="Firefox">
+  <option value="Chrome">
+  <option value="Opera">
+  <option value="Safari">
+</datalist>
+<p>Click the button to add a new row at the first position of the table and then add cells and content.</p>
+
+<table id="myTable">
+  <tr>
+    <td>Row1 cell1</td>
+    <td>Row1 cell2</td>
+  </tr>
+  <tr>
+    <td>Row2 cell1</td>
+    <td>Row2 cell2</td>
+  </tr>
+  <tr>
+    <td>Row3 cell1</td>
+    <td>Row3 cell2</td>
+  </tr>
+</table>
+<br>
+
+<button type="button" onclick="myFunction()">Try it</button>
+<button onclick="window.print()">Print this page</button>
+ 
+
+<script>
+function myFunction() { 
+
+if((document.getElementById("browser").value)!="")
+{
+  var table = document.getElementById("myTable");
+  var row = table.insertRow(0);
+  var cell1 = row.insertCell(0);
+  var cell2 = row.insertCell(1);
+  cell1.innerHTML = document.getElementById("browser").value
+  cell2.innerHTML =document.getElementById("num").value
+document.getElementById("browser").value="";
+document.getElementById("num").value="";
+}
+}
+    
+</script>
+
+</body>
+</html>
