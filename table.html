@@ -53,7 +53,7 @@ option {
   var count=0;
 function myFunction() { 
 
-if((document.getElementById("browser").value)!="")
+if((document.getElementById("num").value)!="")
 {
   var table = document.getElementById("myTable");
   var row = table.insertRow(0);
@@ -64,6 +64,7 @@ if((document.getElementById("browser").value)!="")
 document.getElementById("browser").value="";
   sum+=parseInt(document.getElementById("num").value);
 document.getElementById("num").value="";
+  document.getElementById("browser").value=count++;
   document.getElementById("demo").innerHTML=sum;
 }
   var h=""+count++
