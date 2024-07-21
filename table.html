@@ -50,6 +50,7 @@ option {
 
 <script>
   var sum=0;
+  var count=0;
 function myFunction() { 
 
 if((document.getElementById("browser").value)!="")
@@ -65,6 +66,8 @@ document.getElementById("browser").value="";
 document.getElementById("num").value="";
   document.getElementById("demo").innerHTML=sum;
 }
+  var h=""+count++
+location.hash = h;
 }
     
 </script>
