@@ -27,7 +27,7 @@ option {
 </datalist>
 <button type="button" onclick="myFunction()">Try it</button>
 <p id="demo"></p>
-<table id="myTable">
+<table style="font-size:40px" id="myTable">
   <tr>
     <td>Row1 cell1</td>
     <td>Row1 cell2</td>
@@ -66,8 +66,9 @@ document.getElementById("browser").value="";
 document.getElementById("num").value="";
   document.getElementById("browser").value=count++;
   document.getElementById("demo").innerHTML=sum;
+  document.getElementById("demo1").innerHTML=sum;
 }
-  if(count<10)
+  if(count<15)
   {
   var h=""+count
 location.hash = h;
@@ -77,6 +78,7 @@ location.hash = h;
     
 </script>
 <body onbeforeunload="return myFunction()">
+  <p style="margin-left:20rem; font-size:100px" id="demo1"></p>
 <form style="margin:2rem 2rem"> <input type="text" name="name" id="name" /> </form>
 </body>
 </html>
