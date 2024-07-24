@@ -25,17 +25,15 @@ option {
 <body>
 
 
-
-
-<label for="browsr">Customer name :</label>
-<select id="browsr" name="browsr">
-<option id="browser" ></option>
+<label for="browser">Customer name :</label>
+<select id="browser" name="browser">
   <option value="micro">micro</option>
 <option value="Firefox">Firefox</option>
 <option value="Chrome">Chrome</option>
 <option value="Opera">Opera</option>
 <option value="Safari">Safari</option>
 </select>
+
 <label for="num">Amount:</label>
 <input style="font-size:20px" type="number" name="num" id="num">
 <button type="button" onclick="myFunction()">Try it</button>
@@ -72,12 +70,20 @@ if((document.getElementById("num").value)!="")
   var row = table.insertRow(0);
   var cell1 = row.insertCell(0);
   var cell2 = row.insertCell(1);
+  count++;
+if((document.getElementById("browser").value)=="micro")
+{
+  cell1.innerHTML =count-2;
+cell2.innerHTML =document.getElementById("num").value
+}
+else
+{
   cell1.innerHTML = document.getElementById("browser").value
   cell2.innerHTML =document.getElementById("num").value
-document.getElementById("browser").value="";
+}
   sum+=parseInt(document.getElementById("num").value);
 document.getElementById("num").value="";
-  document.getElementById("browser").value=count++;
+  document.getElementById("browser").value="micro";
   document.getElementById("demo").innerHTML=sum;
   document.getElementById("demo1").innerHTML=sum;
 }
