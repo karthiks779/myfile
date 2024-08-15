@@ -61,14 +61,15 @@ input {
 const input = document.querySelector('#fruit');
 const suggestions = document.querySelector('.suggestions ul');
 function myFunction() { 
-var j=["H1","H2","f1","t1","s2","i1","n1","r1"];
-jk=["Hoppala","Hot_Hoppala","F.M","T.D store","swagath","I.H","N.R navaratna","railway canteen"];
-  let x = document.getElementById("fruit"); 
-  for(i=0;i<10;i++){
-  if(x.value==j[i])
-  {
-  x.value=jk[i];
-}}
+j={H1:"Hoppala",H2:"Hot_Hoppala"};
+  let x = document.getElementById("fruit");
+for(i in j)
+{
+    if(x.value==i)
+    {
+        x.value=j[i];
+    }
+}
 	}
 const fruit = [ 'Hoppala', 'Hot_Hoppala', 'Avocado 🥑', 'Banana', 'Kasuri methi', 'Blackberry', 'Blackcurrant', 'Blueberry', 'Boysenberry', 'Currant', 'Cherry', 'Coconut', 'Cranberry', 'Cucumber', 'Custard apple', 'Damson', 'Date', 'Dragonfruit', 'Durian', 'Elderberry', 'Feijoa', 'Fig', 'Gooseberry', 'Grape', 'Raisin', 'Grapefruit', 'Guava', 'Honeyberry', 'Huckleberry', 'Jabuticaba', 'Jackfruit', 'Jambul', 'Juniper berry', 'Kiwifruit', 'Kumquat', 'Lemon', 'Lime', 'Loquat', 'Longan', 'Lychee', 'Mango', 'Mangosteen', 'Marionberry', 'Melon', 'Cantaloupe', 'Honeydew', 'Watermelon', 'Miracle fruit', 'Mulberry', 'Nectarine', 'Nance', 'Olive', 'Orange', 'Clementine', 'Mandarine', 'Tangerine', 'Papaya', 'Passionfruit', 'Peach', 'Pear', 'Persimmon', 'Plantain', 'Plum', 'Pineapple', 'Pomegranate', 'Pomelo', 'Quince', 'Raspberry', 'Salmonberry', 'Rambutan', 'Redcurrant', 'Salak', 'Satsuma', 'Soursop', 'Star fruit', 'Strawberry', 'Tamarillo', 'Tamarind', 'Yuzu'];
 
