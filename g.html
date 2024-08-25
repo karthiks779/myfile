@@ -140,18 +140,18 @@ var num=["Hoppala","Hot_Hoppala","Chicken_Masala_poweder(hotel)500gms","Compound
 	 "Chicken_tikka_masala_500gms","Chat_masala_500gms","Turmeric_powder","Biryani_masala_Rice_400gms","Jeera_powder_50gms",
 	 "Garam_Masala_50gms","Pepper_powder_50gms","panipuri_masala_L"];
 var sum=[,24,30,20];
- var j={Hoppala:[22],Hot_Hoppala:[24],Chicken_Masala_poweder_hotel_500gms:[140],Compound_White_pepper_powder_500gms:[70],
+ var j={Hoppala:[22],Hot_Hoppala:[24,40],Chicken_Masala_poweder_hotel_500gms:[140],Compound_White_pepper_powder_500gms:[70],
 	Chicken_Masala_500gms_Elaine:[95],chilly_powder_500gms_popular:[85],Kitchen_King_200gms:[112],Elaine_Compound_Black_pepper_hotel_500gms_ll:[90],
 	Panipuri_Masala_powder_200gms:[112],Turmeric_pounch_100gms:[24],Sambar_powder_500gms:[160],Garam_Masala_powder_500gms:[270],
 	Jeera_masala_500gms_hotel:[290],Chole_masala_powder_500gms:[230],Chicken_tikka_masala_500gms:[160],Chat_masala_500gms:[170]
 	,Turmeric_powder:[110],Biryani_masala_Rice_400gms:[110],Jeera_powder_50gms:[40],Garam_Masala_50gms:[32],Pepper_powder_50gms:[50],
-	panipuri_masala_L:[8],Kasmir_chilly_powder_200gms:[64],Butter_pannir_masala_100gms:[48]};
+	panipuri_masala_L:[8,12],Kasmir_chilly_powder_200gms:[64],Butter_pannir_masala_100gms:[48]};
   numOne = document.getElementById("fruit").value;
 for(var i in j)
 {
  if(numOne==i){
 var val=j[numOne];
-  document.getElementById("answer").innerHTML = numOne+": "+val[0];
+  document.getElementById("answer").innerHTML = numOne+"Rate: "+val[0]+"     MRP:"+val[1];
 location.hash ="1";
  system.exit(0);
 
