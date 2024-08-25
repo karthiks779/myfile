@@ -71,13 +71,13 @@ for(i in j)
     }
 }
 	}
-const fruit = ["Hoppala","Hot Hoppala","Chicken_Masala_poweder_hotel_500gms","Compound_White_pepper_powder_500gms",
-	       "Chicken_Masala_500gms_Elaine","chilly_powder_500gms_popular","Kitchen_King_200gms",
-	       "Elaine_Compound_Black_pepper__hotel__500gms_ll","Panipuri_Masala_powder_200gms","Turmeric_pounch_100gms"
-	       ,"Sambar_powder_500gms","Garam_Masala_powder_500gms","Jeera_masala_500gms_hotel","Chole_masala_powder_500gms",
-	       "Chicken_tikka_masala_500gms","Chat_masala_500gms","Turmeric_powder","Biryani_masala_Rice_400gms",
-	       "Jeera_powder_50gms","Garam_Masala_50gms","Pepper_powder_50gms","panipuri_masala_L","Kasmir_chilly_powder_200gms",
-	      "Butter_pannir_masala_100gms"];
+const fruit = ["Hoppala","Hot Hoppala","Chicken Masala poweder hotel 500gms","Compound White pepper powder 500gms",
+	       "Chicken Masala 500gms Elaine","chilly powder 500gms popular","Kitchen King 200gms",
+	       "Elaine Compound Black pepper hotel 500gms ll","Panipuri Masala powder 200gms","Turmeric pounch 100gms"
+	       ,"Sambar powder 500gms","Garam Masala powder 500gms","Jeera masala 500gms hotel","Chole masala powder 500gms",
+	       "Chicken tikka masala 500gms","Chat masala 500gms","Turmeric powder","Biryani masala Rice 400gms",
+	       "Jeera powder 50gms","Garam Masala 50gms","Pepper powder 50gms","panipuri masala L","Kasmir chilly powder 200gms",
+	      "Butter pannir masala 100gms"];
 function search(str) {
 	let results = [];
 	const val = str.toLowerCase();
@@ -133,19 +133,19 @@ suggestions.addEventListener('click', useSuggestion);
 function add()
 {
   var numOne ;
-var num=["Hoppala","Hot_Hoppala","Chicken_Masala_poweder(hotel)500gms","Compound_White_pepper_powder_500gms",
+var num=["Hoppala","Hot_Hoppala","Chicken Masala_poweder(hotel)500gms","Compound_White_pepper_powder_500gms",
 	 "Chicken_Masala_500gms(Elaine)","chilly_powder_500gms(popular)","Kitchen_King_200gms",
 	 "Elaine_Compound_Black_pepper_(hotel)_500gms_ll","Panipuri_Masala_powder_200gms","Turmeric_pounch_100gms"
 	 ,"Sambar_powder_500gms","Garam_Masala_powder_500gms","Jeera_masala_500gms(hotel)","Chole_masala_powder_500gms",
 	 "Chicken_tikka_masala_500gms","Chat_masala_500gms","Turmeric_powder","Biryani_masala_Rice_400gms","Jeera_powder_50gms",
 	 "Garam_Masala_50gms","Pepper_powder_50gms","panipuri_masala_L"];
 var sum=[,24,30,20];
- var j={Hoppala:[22],"Hot Hoppala":[24,40],Chicken_Masala_poweder_hotel_500gms:[140],Compound_White_pepper_powder_500gms:[70],
-	Chicken_Masala_500gms_Elaine:[95],chilly_powder_500gms_popular:[85],Kitchen_King_200gms:[112],Elaine_Compound_Black_pepper_hotel_500gms_ll:[90],
-	Panipuri_Masala_powder_200gms:[112],Turmeric_pounch_100gms:[24],Sambar_powder_500gms:[160],Garam_Masala_powder_500gms:[270],
-	Jeera_masala_500gms_hotel:[290],Chole_masala_powder_500gms:[230],Chicken_tikka_masala_500gms:[160],Chat_masala_500gms:[170]
-	,Turmeric_powder:[110],Biryani_masala_Rice_400gms:[110],Jeera_powder_50gms:[40],Garam_Masala_50gms:[32],Pepper_powder_50gms:[50],
-	panipuri_masala_L:[8,12],Kasmir_chilly_powder_200gms:[64],Butter_pannir_masala_100gms:[48]};
+ var j={"Hoppala":[22],"Hot Hoppala":[24,40],"Chicken Masala poweder hotel 500gms":[140],"Compound White pepper powder 500gms":[70],
+	"Chicken Masala 500gms Elaine":[95],"chilly powder 500gms popular":[85],"Kitchen King 200gms":[112],"Elaine Compound Black pepper hotel 500gms ll":[90],
+	"Panipuri Masala powder 200gms":[112],"Turmeric pounch 100gms":[24],"Sambar powder 500gms":[160],"Garam Masala powder 500gms":[270],
+	"Jeera masala 500gms hotel":[290],"Chole masala powder 500gms":[230],"Chicken tikka masala 500gms":[160],"Chat masala 500gms":[170]
+	,"Turmeric powder":[110],"Biryani masala Rice 400gms":[110],"Jeera powder 50gms":[40],"Garam Masala 50gms":[32],"Pepper powder 50gms":[50],
+	"panipuri masala L":[8,12],"Kasmir chilly powder 200gms":[64],"Butter pannir masala 100gms":[48]};
   numOne = document.getElementById("fruit").value;
 for(var i in j)
 {
