@@ -1,30 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style>
+* {
+  box-sizing: border-box;
+}
 
-<input type="text" id="search-input">
-<button onclick="suggestOptions()">bb</button>
+body {
+  font: 16px Arial;  
+}
 
+/*the container must be positioned relative:*/
+.autocomplete {
+  position: relative;
+  display: inline-block;
+}
 
-<select id="suggestions">
-  <!-- Options will be populated here -->
-</select>
-
-
-<script>
-  function suggestOptions() {
-    // Get the input value
-    const inputValue = document.getElementById("search-input").value;
-    
-    // Create a new option for each suggestion
-    const options = [];
-    for (let i = 0; i < suggestions.length; i++) {
-      if (suggestions[i].includes(inputValue)) {
-        options.push(`<option value="${suggestions[i]}">${suggestions[i]}</option>`);
-      }
-    }
-    
-    // Update the select tag's innerHTML with the new options
-    document.getElementById("suggestions").innerHTML = options.join("");
-  }
-
-  // Example data: an array of suggestions
-  const suggestions = ["apple", "banana", "orange", "grape", "mango"];
-</script>
+input {
+  border: 1px solid transparent;
+  background-color: #f1f1f1;
+  padding: 10px;
+  font-size: 16px;
