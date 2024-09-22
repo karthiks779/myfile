@@ -96,12 +96,10 @@ function autocomplete(inp, arr) {
       this.parentNode.appendChild(a);
       /*for each item in the array...*/
       for (i = 0; i < arr.length; i++) {
+        for (i1 = 0; i1 < arr.length; i1++) {
         /*check if the item starts with the same letters as the text field value:*/
-         if (arr[i].substr(0,val.length).toUpperCase() == val.toUpperCase()||arr[i].substr(1,val.length).toUpperCase() == val.toUpperCase() ||
-        arr[i].substr(3, val.length).toUpperCase() == val.toUpperCase() || arr[i].substr(2, val.length).toUpperCase() == val.toUpperCase() ||
-        arr[i].substr(4,val.length).toUpperCase() == val.toUpperCase()||arr[i].substr(5,val.length).toUpperCase() == val.toUpperCase() ||
-        arr[i].substr(7, val.length).toUpperCase() == val.toUpperCase() || arr[i].substr(6, val.length).toUpperCase() == val.toUpperCase()) {
-           /*create a DIV element for each matching element:*/
+         if (arr[i].substr(i1,val.length).toUpperCase() == val.toUpperCase())
+            /*create a DIV element for each matching element:*/
           b = document.createElement("DIV");
           /*make the matching letters bold:*/
           b.innerHTML = "<strong>" + arr[i].substr(0, val.length) + "</strong>";
@@ -118,6 +116,7 @@ function autocomplete(inp, arr) {
           });
           a.appendChild(b);
         }
+      }
       }
   });
   /*execute a function presses a key on the keyboard:*/
