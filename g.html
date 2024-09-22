@@ -106,10 +106,13 @@ function search(str) {
 	const val = str.toLowerCase();
     let options=[];
 	for (i = 0; i < fruit.length; i++) {
-		if (fruit[i].toLowerCase().indexOf(val) > -1) {
+		for (i1 = 0; i1 < fruit.length; i1++) {
+		if(fruit[i].substr(i1, val.length).toUpperCase() == val.toUpperCase()) {
+         
 			results.push(fruit[i]);
 			options.push(`<option value="${fruit[i]}">${fruit[i]}</option>`);
         
+		}
 		}
 	}
 document.getElementById("suggestions").innerHTML = options.join("");
