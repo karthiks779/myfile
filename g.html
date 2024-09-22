@@ -1,83 +1,181 @@
-<div class="search-container">
-	<input type="text" name="fruit" id="fruit" placeholder="Search fruit 🍎" onkeyup="myFunction()">
-	<div class="suggestions">
-		<ul></ul>
-	</div>
-</div>
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <style>
-input {
-  border: 0 none;
+* {
+  box-sizing: border-box;
 }
 
-.search-container {
-  width: 400px;
+body {
+  font: 16px Arial;  
+}
+/*the container must be positioned relative:*/
+.autocomplete {
   position: relative;
-  margin: 15px auto;
-}
-.search-container input,
-.search-container .suggestions {
-  width: 100%;
-  background: #fff;
-  text-align: left;
-}
-.search-container input {
-  background: rgba(255, 255, 255, 0.2);
-  height: 60px;
-  padding: 0 10px;
-}
-.search-container .suggestions {
-  position: absolute;
-  top: 60px;
-}
-
-ul {
-  display: none;
-  list-style-type: none;
-  padding: 0;
-  margin: 0;
-  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.2);
-  max-height: 200px;
-  overflow-y: auto;
-}
-ul.has-suggestions {
-  display: block;
-}
-ul li {
-  padding: 10px;
-  cursor: pointer;
-  background: rgba(255, 255, 255, 0.2);
-}
-ul li:hover {
-  background-color: #e65c00;
+  display: inline-block;
 }
 
 input {
-  border-bottom: 2px solid #e65c00;
+  border: 1px solid transparent;
+  background-color: #f1f1f1;
+  padding: 10px;
+  font-size: 16px;
+}
+
+input[type=text] {
+  background-color: #f1f1f1;
+  width: 100%;
+}
+
+input[type=submit] {
+  background-color: DodgerBlue;
+  color: #fff;
+  cursor:pointer;
+}
+.autocomplete-items {
+  position: absolute;
+  border: 1px solid #d4d4d4;
+  border-bottom: none;
+  border-top: none;
+  z-index: 99;
+  /*position the autocomplete items to be the same width as the container:*/
+  top: 100%;
+  left: 0;
+  right: 0;
+}
+ .autocomplete-items div  {
+     padding:10px;
+     cursor:pointer;
+     background-color;#fff;
+  border-bottom: 1px solid #d4d4d4; 
+}
+/*when hovering an item:*/
+.autocomplete-items div:hover {
+  background-color: #e9e9e9; 
+}
+
+/*when navigating through the items using the arrow keys:*/
+.autocomplete-active {
+  background-color: DodgerBlue !important; 
+  color: #ffffff; 
 }
 </style>
-<p id="answer1"></p>
-<button style="margin-left:1rem" onclick="search(str)">Click1</button>
+</head>     
+<body>
 
-<select style="margin-left:25rem" id="suggestions"></select>
-<button style="margin-left:10rem" onclick="add()">Click</button>
-<button style="margin-left:10rem" onclick="add1()">Click8</button>
+<h2>Autocomplete</h2>
+
+<p>Start typing:</p>
+
+<!--Make sure the form has the autocomplete function switched off:-->
+
+  <div class="autocomplete" style="width:300px;">
+    <input id="myInput" type="text" name="myCountry" placeholder="Country">
+  </div>
+  <input type="submit" onclick="add()">
 <p id="answer"></p>
 
 <script>
-const input = document.querySelector('#fruit');
-const suggestions = document.querySelector('.suggestions ul');
-function myFunction() { 
-j={H1:"Hoppala",H2:"Hot_Hoppala"};
-  let x = document.getElementById("fruit");
-for(i in j)
-{
-    if(x.value==i)
-    {
-        x.value=j[i];
+function autocomplete(inp, arr) {
+  /*the autocomplete function takes two arguments,
+  the text field element and an array of possible autocompleted values:*/
+  var currentFocus;
+  /*execute a function when someone writes in the text field:*/
+  inp.addEventListener("input", function(e) {
+      var a, b, i, val = this.value;
+      /*close any already open lists of autocompleted values*/
+      closeAllLists();
+      if (!val) { return false;}
+      currentFocus = -1;
+      /*create a DIV element that will contain the items (values):*/
+      a = document.createElement("DIV");
+      a.setAttribute("id", this.id + "autocomplete-list");
+      a.setAttribute("class", "autocomplete-items");
+      /*append the DIV element as a child of the autocomplete container:*/
+      this.parentNode.appendChild(a);
+      /*for each item in the array...*/
+      for (i = 0; i < arr.length; i++) {
+        for (i1 = 0; i1 < arr.length; i1++) {
+        /*check if the item starts with the same letters as the text field value:*/
+         if (arr[i].substr(i1,val.length).toUpperCase() == val.toUpperCase())
+         {
+            /*create a DIV element for each matching element:*/
+          b = document.createElement("DIV");
+          /*make the matching letters bold:*/
+          b.innerHTML = "<strong>" + arr[i].substr(0, val.length) + "</strong>";
+          b.innerHTML += arr[i].substr(val.length);
+          /*insert a input field that will hold the current array item's value:*/
+          b.innerHTML += "<input type='hidden' value='" + arr[i] + "'>";
+          /*execute a function when someone clicks on the item value (DIV element):*/
+          b.addEventListener("click", function(e) {
+              /*insert the value for the autocomplete text field:*/
+              inp.value = this.getElementsByTagName("input")[0].value;
+              /*close the list of autocompleted values,
+              (or any other open lists of autocompleted values:*/
+              closeAllLists();
+          });
+          a.appendChild(b);
+        }
+      }
+      }
+  });
+  /*execute a function presses a key on the keyboard:*/
+  inp.addEventListener("keydown", function(e) {
+      var x = document.getElementById(this.id + "autocomplete-list");
+      if (x) x = x.getElementsByTagName("div");
+      if (e.keyCode == 40) {
+        /*If the arrow DOWN key is pressed,
+        increase the currentFocus variable:*/
+        currentFocus++;
+        /*and and make the current item more visible:*/
+        addActive(x);
+      } else if (e.keyCode == 38) { //up
+        /*If the arrow UP key is pressed,decrease the currentFocus variable:*/
+        currentFocus--;
+        /*and and make the current item more visible:*/
+        addActive(x);
+      } else if (e.keyCode == 13) {
+        /*If the ENTER key is pressed, prevent the form from being submitted,*/
+        e.preventDefault();
+        if (currentFocus > -1) {
+          /*and simulate a click on the "active" item:*/
+          if (x) x[currentFocus].click();
+        }
+      }
+  });
+  function addActive(x) {
+    /*a function to classify an item as "active":*/  /*start by removing the "active" class on all items:*/
+    removeActive(x);
+    if (currentFocus >= x.length) currentFocus = 0;
+    if (currentFocus < 0) currentFocus = (x.length - 1);
+    /*add class "autocomplete-active":*/
+    x[currentFocus].classList.add("autocomplete-active");
+  }
+  function removeActive(x) {
+    /*a function to remove the "active" class from all autocomplete items:*/
+    for (var i = 0; i < x.length; i++) {
+      x[i].classList.remove("autocomplete-active");
     }
+  }
+  function closeAllLists(elmnt) {
+    /*close all autocomplete lists in the document,
+    except the one passed as an argument:*/
+    var x = document.getElementsByClassName("autocomplete-items");
+    for (var i = 0; i < x.length; i++) {
+      if (elmnt != x[i] && elmnt != inp) {
+        x[i].parentNode.removeChild(x[i]);
+      }
+    }
+  }
+  /*execute a function when someone clicks in the document:*/
+  document.addEventListener("click", function (e) {
+      closeAllLists(e.target);
+  });
 }
-	}
-const fruit = ["Hoppala","Hot Hoppala","Chicken Masala poweder hotel 500gms","Compound White pepper powder 500gms",
+
+/*An array containing all the country names in the world:*/
+var countries= ["Hoppala","Hot Hoppala","Chicken Masala poweder hotel 500gms","Compound White pepper powder 500gms",
 	       "Chicken Masala 500gms Elaine","chilly powder 500gms popular","Kitchen King 200gms",
 	       "Elaine Compound Black pepper hotel 500gms ll","Panipuri Masala powder 200gms","Turmeric pounch 100gms"
 	       ,"Sambar powder 500gms","Garam Masala powder 500gms","Jeera masala 500gms hotel","Chole masala powder 500gms",
@@ -101,63 +199,9 @@ const fruit = ["Hoppala","Hot Hoppala","Chicken Masala poweder hotel 500gms","Co
 "Vegetable Masala 18Gms","Vegetable pulav Masala 18Gms","Puliyogare masala powder 30Gms", 
 "Lemon Rice Powder","Fried Rice Powder","Chicken Ghee Roast Masala 25gms", 
 "Chicken Kundapuri Masala 25gms"];
-function search(str) {
-	let results = [];
-	const val = str.toLowerCase();
-    let options=[];
-	for (i = 0; i < fruit.length; i++) {
-		for (i1 = 0; i1 < fruit.length; i1++) {
-		if(fruit[i].substr(i1, val.length).toUpperCase() == val.toUpperCase()) {
-         
-			results.push(fruit[i]);
-			options.push(`<option value="${fruit[i]}">${fruit[i]}</option>`);
-        
-		}
-		}
-	}
-document.getElementById("suggestions").innerHTML = options.join("");
-	return results;
-}
-
-function searchHandler(e) {
-	const inputVal = e.currentTarget.value;
-	let results = [];
-	if (inputVal.length > 0) {
-		results = search(inputVal);
-	}
-	showSuggestions(results, inputVal);
-}
-
-function showSuggestions(results, inputVal) {
-    
-    suggestions.innerHTML = '';
-
-	if (results.length > 0) {
-		for (i = 0; i < results.length; i++) {
-			let item = results[i];
-			// Highlights only the first match
-			// TODO: highlight all matches
-			const match = item.match(new RegExp(inputVal, 'i'));
-			item = item.replace(match[0], `<strong>${match[0]}</strong>`);
-			suggestions.innerHTML += `<li>${item}</li>`;
-		}
-		suggestions.classList.add('has-suggestions');
-	} else {
-		results = [];
-		suggestions.innerHTML = '';
-		suggestions.classList.remove('has-suggestions');
-	}
-}
-
-function useSuggestion(e) {
-	input.value = e.target.innerText;
-	input.focus();
-	suggestions.innerHTML = '';
-	suggestions.classList.remove('has-suggestions');
-}
-
-input.addEventListener('keyup', searchHandler);
-suggestions.addEventListener('click', useSuggestion);
+/*initiate the autocomplete function on the "myInput" element, and pass along the countries array as possible autocomplete values:*/
+  
+autocomplete(document.getElementById("myInput"), countries);
 function add()
 {
   var numOne ;
@@ -192,7 +236,7 @@ var sum=[,24,30,20];
 "Lemon Rice Powder": [10.00,15.00],"Fried Rice Powder": [14.00,20.00],"Chicken Ghee Roast Masala 25gms": [14.00,20.00], 
 "Chicken Kundapuri Masala 25gms": [14.00,20.00]
 };
-  numOne = document.getElementById("fruit").value;
+  numOne = document.getElementById("myInput").value;
 for(var i in j)
 {
  if(numOne==i){
@@ -210,51 +254,7 @@ document.getElementById("answer").innerHTML="";
  
   return "u";
 }
-
-function add1()
-{
-
- var j={"Hoppala":[22,35],"Hot Hoppala":[24,40],"Chicken Masala poweder hotel 500gms":[140],"Compound White pepper powder 500gms":[70],
-	"Chicken Masala 500gms Elaine":[95],"chilly powder 500gms popular":[85],"Kitchen King 200gms":[112],"Elaine Compound Black pepper hotel 500gms ll":[90],
-	"Panipuri Masala powder 200gms":[112],"Turmeric pounch 100gms":[24,40],"Sambar powder 500gms":[160],"Garam Masala powder 500gms":[270],
-	"Jeera masala 500gms hotel":[290],"Chole masala powder 500gms":[230],"Chicken tikka masala 500gms":[160],"Chat masala 500gms":[170]
-	,"Turmeric powder":[110],"Biryani masala Rice 400gms":[110,145],"Jeera powder 50gms":[40],"Garam Masala 50gms":[32,40],"Pepper powder 50gms":[50],
-	"panipuri masala L":[8,12],"Kasmir chilly powder 100gms":[56,70],"Butter pannir masala 100gms":[48],"chilly powder special(box)":[30,40],
-       "Coriander powder 100gms pouch":[40,16],"Hotel rasam 500gms":[160],"Elaine Garam Masala 500gms":[90], "Biryani masala 50gms":[36,45],
-       "Fish fry Masala 100gms":[32.00,40.00],"Fish fry/Kabab Masala 100gms": [32.00, 40.00],"Fish Masala 100gms": [48.00,60.00], 
-"Fish Pulimunchi 100gms": [48.00,60.00],"Biryani Rice 400gms": [96.00,130.00],"Chettinad Biryani Rice 500gms": [140.00,105.00], 
-"Millet Health Mix 500gms": [170.00,220.00],"Chilli Powder pouch line 100GMS LINES": [16.00,40.00],"Turmric powder pouch line 100gms": [18.00,40.00],
-"Avalakki Masala 18Gms": [7.00,10.00],"Bafat Powder":  [7.00,10.00],"Biryani masala 15Gms": [7.00,10.00],
-"Charmuri masala 18Gms": [7.00,10.00],"Chat Masala 18Gms": [7.00,10.00],"Chicken Kabab Masala 25gms": [6.00,10.00],
-"Chicken Masala Powder 18Gms": [7.00,10.00],"Chicken Pulimunchi 18Gms": [7.00,10.00],"Chicken Pepper fry masala 25gms": [14.00,20.00], 
-"Chicken Sukka masala": [7.00,10.00],"Chilli Powder 25gms": [6.00,10.00],"Chole Masala 18Gms": [7.00, 10.00], 
-"Coorg pork masala 18Gms": [7.00,10.00],"Coriander Powder 20gms": [6.00,10.00],"Egg curry masala 18Gms": [7.00,10.00], 
-"Fish fry Masala 25gms": [6.00,10.00],"Fish Pulimunchi / Curry Masala 18Gms": [7.00,10.00],"Garam Masala 18Gms": [7.00,10.00], 
-"Jeera Powder 18Gms": [7.00,10.00],"Lemon Chicken Kabab Powder 30Gms": [14.00,20.00],"Mutton Masala 18Gms": [7.00,10.00], 
-"Panipuri masala 18Gms": [7.00,10.00],"Pannir masala 18Gms": [7.00,10.00],"Pasta/Noodles masala 18Gms": [7.00,10.00], 
-"Pavbhaji Masala 18Gms": [7.00,10.00],"Pepper powder 15Gms": [7.00,10.00],"Chicken Pepper Kabab powder 30Gms": [14.00,20.00], 
-"Rasam Powder 18Gms": [7.00,10.00],"Sambhar powder 18Gms": [7.00,10.00],"Sambhar powder (Medras)": [7.00,10.00],"Turmric powder 25gms": [6.00,10.00], 
-"Vegetable Masala 18Gms": [7.00,10.00],"Vegetable pulav Masala 18Gms": [7.00,10.00],"Puliyogare masala powder 30Gms": [7.00,10.00], 
-"Lemon Rice Powder": [10.00,15.00],"Fried Rice Powder": [14.00,20.00],"Chicken Ghee Roast Masala 25gms": [14.00,20.00], 
-"Chicken Kundapuri Masala 25gms": [14.00,20.00]
-};
-  
- numOne1 = document.getElementById("suggestions").value;
-for(var i1 in j)
-{
- if(numOne1==i1){
-var val1=j[numOne1];
-  document.getElementById("answer1").innerHTML = numOne1+" Rate: ".fontcolor("red")+val1[0]+"     MRP:".fontcolor("blue")+val1[1];
-
- system.exit(0);
-
-
-} 
-}
-  document.getElementById("answer1").innerHTML="hj";
-
-  return "u";
-}
-
-
 </script>
+
+</body>
+</html>
