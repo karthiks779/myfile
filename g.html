@@ -71,9 +71,9 @@ input[type=submit] {
 <!--Make sure the form has the autocomplete function switched off:-->
 
   <div class="autocomplete" style="width:300px;">
-    <input id="myInput" type="text" name="myCountry" placeholder="item" onclick="add()">
+    <input id="myInput" type="text" name="myCountry" placeholder="Country">
   </div>
-  
+  <input type="submit" onclick="add()">
 <p id="answer"></p>
 
 <script>
@@ -111,6 +111,62 @@ function autocomplete(inp, arr) {
           b.addEventListener("click", function(e) {
               /*insert the value for the autocomplete text field:*/
               inp.value = this.getElementsByTagName("input")[0].value;
+            
+           
+  // Get the selected value
+
+
+  var numOne ;
+var num=["Hoppala","Hot_Hoppala","Chicken Masala_poweder(hotel)500gms","Compound_White_pepper_powder_500gms",
+	 "Chicken_Masala_500gms(Elaine)","chilly_powder_500gms(popular)","Kitchen_King_200gms",
+	 "Elaine_Compound_Black_pepper_(hotel)_500gms_ll","Panipuri_Masala_powder_200gms","Turmeric_pounch_100gms"
+	 ,"Sambar_powder_500gms","Garam_Masala_powder_500gms","Jeera_masala_500gms(hotel)","Chole_masala_powder_500gms",
+	 "Chicken_tikka_masala_500gms","Chat_masala_500gms","Turmeric_powder","Biryani_masala_Rice_400gms","Jeera_powder_50gms",
+	 "Garam_Masala_50gms","Pepper_powder_50gms","panipuri_masala_L"];
+var sum=[,24,30,20];
+ var j={"Hoppala":[22,35],"Hot Hoppala":[24,40],"Chicken Masala poweder hotel 500gms":[140],"Compound White pepper powder 500gms":[70],
+	"Chicken Masala 500gms Elaine":[95],"chilly powder 500gms popular":[85],"Kitchen King 200gms":[112],"Elaine Compound Black pepper hotel 500gms ll":[90],
+	"Panipuri Masala powder 200gms":[112],"Turmeric pounch 100gms":[24,40],"Sambar powder 500gms":[160],"Garam Masala powder 500gms":[270],
+	"Jeera masala 500gms hotel":[290],"Chole masala powder 500gms":[230],"Chicken tikka masala 500gms":[160],"Chat masala 500gms":[170]
+	,"Turmeric powder":[110],"Biryani masala Rice 400gms":[110,145],"Jeera powder 50gms":[40],"Garam Masala 50gms":[32,40],"Pepper powder 50gms":[50],
+	"panipuri masala L":[8,12],"Kasmir chilly powder 100gms":[56,70],"Butter pannir masala 100gms":[48],"chilly powder special(box)":[30,40],
+       "Coriander powder 100gms pouch":[40,16],"Hotel rasam 500gms":[160],"Elaine Garam Masala 500gms":[90], "Biryani masala 50gms":[36,45],
+       "Fish fry Masala 100gms":[32.00,40.00],"Fish fry/Kabab Masala 100gms": [32.00, 40.00],"Fish Masala 100gms": [48.00,60.00], 
+"Fish Pulimunchi 100gms": [48.00,60.00],"Biryani Rice 400gms": [96.00,130.00],"Chettinad Biryani Rice 500gms": [140.00,105.00], 
+"Millet Health Mix 500gms": [170.00,220.00],"Chilli Powder pouch line 100GMS LINES": [16.00,40.00],"Turmric powder pouch line 100gms": [18.00,40.00],
+"Avalakki Masala 18Gms": [7.00,10.00],"Bafat Powder":  [7.00,10.00],"Biryani masala 15Gms": [7.00,10.00],
+"Charmuri masala 18Gms": [7.00,10.00],"Chat Masala 18Gms": [7.00,10.00],"Chicken Kabab Masala 25gms": [6.00,10.00],
+"Chicken Masala Powder 18Gms": [7.00,10.00],"Chicken Pulimunchi 18Gms": [7.00,10.00],"Chicken Pepper fry masala 25gms": [14.00,20.00], 
+"Chicken Sukka masala": [7.00,10.00],"Chilli Powder 25gms": [6.00,10.00],"Chole Masala 18Gms": [7.00, 10.00], 
+"Coorg pork masala 18Gms": [7.00,10.00],"Coriander Powder 20gms": [6.00,10.00],"Egg curry masala 18Gms": [7.00,10.00], 
+"Fish fry Masala 25gms": [6.00,10.00],"Fish Pulimunchi / Curry Masala 18Gms": [7.00,10.00],"Garam Masala 18Gms": [7.00,10.00], 
+"Jeera Powder 18Gms": [7.00,10.00],"Lemon Chicken Kabab Powder 30Gms": [14.00,20.00],"Mutton Masala 18Gms": [7.00,10.00], 
+"Panipuri masala 18Gms": [7.00,10.00],"Pannir masala 18Gms": [7.00,10.00],"Pasta/Noodles masala 18Gms": [7.00,10.00], 
+"Pavbhaji Masala 18Gms": [7.00,10.00],"Pepper powder 15Gms": [7.00,10.00],"Chicken Pepper Kabab powder 30Gms": [14.00,20.00], 
+"Rasam Powder 18Gms": [7.00,10.00],"Sambhar powder 18Gms": [7.00,10.00],"Sambhar powder (Medras)": [7.00,10.00],"Turmric powder 25gms": [6.00,10.00], 
+"Vegetable Masala 18Gms": [7.00,10.00],"Vegetable pulav Masala 18Gms": [7.00,10.00],"Puliyogare masala powder 30Gms": [7.00,10.00], 
+"Lemon Rice Powder": [10.00,15.00],"Fried Rice Powder": [14.00,20.00],"Chicken Ghee Roast Masala 25gms": [14.00,20.00], 
+"Chicken Kundapuri Masala 25gms": [14.00,20.00]
+};
+  numOne = inp.value;
+
+for(var i in j)
+{
+ if(numOne==i){
+var val=j[numOne];
+ document.getElementById("answer").innerHTML = numOne+" Rate: ".fontcolor("red")+val[0]+"     MRP:".fontcolor("blue")+val[1];
+
+location.hash ="1";
+ system.exit(0);
+
+
+} 
+
+}
+ 
+  return "u";
+
+
               /*close the list of autocompleted values,
               (or any other open lists of autocompleted values:*/
               closeAllLists();
@@ -168,6 +224,7 @@ function autocomplete(inp, arr) {
       }
     }
   }
+
   /*execute a function when someone clicks in the document:*/
   document.addEventListener("click", function (e) {
       closeAllLists(e.target);
@@ -202,58 +259,8 @@ var countries= ["Hoppala","Hot Hoppala","Chicken Masala poweder hotel 500gms","C
 /*initiate the autocomplete function on the "myInput" element, and pass along the countries array as possible autocomplete values:*/
   
 autocomplete(document.getElementById("myInput"), countries);
-function add()
-{
-  var numOne ;
-var num=["Hoppala","Hot_Hoppala","Chicken Masala_poweder(hotel)500gms","Compound_White_pepper_powder_500gms",
-	 "Chicken_Masala_500gms(Elaine)","chilly_powder_500gms(popular)","Kitchen_King_200gms",
-	 "Elaine_Compound_Black_pepper_(hotel)_500gms_ll","Panipuri_Masala_powder_200gms","Turmeric_pounch_100gms"
-	 ,"Sambar_powder_500gms","Garam_Masala_powder_500gms","Jeera_masala_500gms(hotel)","Chole_masala_powder_500gms",
-	 "Chicken_tikka_masala_500gms","Chat_masala_500gms","Turmeric_powder","Biryani_masala_Rice_400gms","Jeera_powder_50gms",
-	 "Garam_Masala_50gms","Pepper_powder_50gms","panipuri_masala_L"];
-var sum=[,24,30,20];
- var j={"Hoppala":[22,35],"Hot Hoppala":[24,40],"Chicken Masala poweder hotel 500gms":[140],"Compound White pepper powder 500gms":[70],
-	"Chicken Masala 500gms Elaine":[95],"chilly powder 500gms popular":[85],"Kitchen King 200gms":[112],"Elaine Compound Black pepper hotel 500gms ll":[90],
-	"Panipuri Masala powder 200gms":[112],"Turmeric pounch 100gms":[24,40],"Sambar powder 500gms":[160],"Garam Masala powder 500gms":[270],
-	"Jeera masala 500gms hotel":[290],"Chole masala powder 500gms":[230],"Chicken tikka masala 500gms":[160],"Chat masala 500gms":[170]
-	,"Turmeric powder":[110],"Biryani masala Rice 400gms":[110,145],"Jeera powder 50gms":[40],"Garam Masala 50gms":[32,40],"Pepper powder 50gms":[50],
-	"panipuri masala L":[8,12],"Kasmir chilly powder 100gms":[56,70],"Butter pannir masala 100gms":[48],"chilly powder special(box)":[30,40],
-       "Coriander powder 100gms pouch":[40,16],"Hotel rasam 500gms":[160],"Elaine Garam Masala 500gms":[90], "Biryani masala 50gms":[36,45],
-       "Fish fry Masala 100gms":[32.00,40.00],"Fish fry/Kabab Masala 100gms": [32.00, 40.00],"Fish Masala 100gms": [48.00,60.00], 
-"Fish Pulimunchi 100gms": [48.00,60.00],"Biryani Rice 400gms": [96.00,130.00],"Chettinad Biryani Rice 500gms": [140.00,105.00], 
-"Millet Health Mix 500gms": [170.00,220.00],"Chilli Powder pouch line 100GMS LINES": [16.00,40.00],"Turmric powder pouch line 100gms": [18.00,40.00],
-"Avalakki Masala 18Gms": [7.00,10.00],"Bafat Powder":  [7.00,10.00],"Biryani masala 15Gms": [7.00,10.00],
-"Charmuri masala 18Gms": [7.00,10.00],"Chat Masala 18Gms": [7.00,10.00],"Chicken Kabab Masala 25gms": [6.00,10.00],
-"Chicken Masala Powder 18Gms": [7.00,10.00],"Chicken Pulimunchi 18Gms": [7.00,10.00],"Chicken Pepper fry masala 25gms": [14.00,20.00], 
-"Chicken Sukka masala": [7.00,10.00],"Chilli Powder 25gms": [6.00,10.00],"Chole Masala 18Gms": [7.00, 10.00], 
-"Coorg pork masala 18Gms": [7.00,10.00],"Coriander Powder 20gms": [6.00,10.00],"Egg curry masala 18Gms": [7.00,10.00], 
-"Fish fry Masala 25gms": [6.00,10.00],"Fish Pulimunchi / Curry Masala 18Gms": [7.00,10.00],"Garam Masala 18Gms": [7.00,10.00], 
-"Jeera Powder 18Gms": [7.00,10.00],"Lemon Chicken Kabab Powder 30Gms": [14.00,20.00],"Mutton Masala 18Gms": [7.00,10.00], 
-"Panipuri masala 18Gms": [7.00,10.00],"Pannir masala 18Gms": [7.00,10.00],"Pasta/Noodles masala 18Gms": [7.00,10.00], 
-"Pavbhaji Masala 18Gms": [7.00,10.00],"Pepper powder 15Gms": [7.00,10.00],"Chicken Pepper Kabab powder 30Gms": [14.00,20.00], 
-"Rasam Powder 18Gms": [7.00,10.00],"Sambhar powder 18Gms": [7.00,10.00],"Sambhar powder (Medras)": [7.00,10.00],"Turmric powder 25gms": [6.00,10.00], 
-"Vegetable Masala 18Gms": [7.00,10.00],"Vegetable pulav Masala 18Gms": [7.00,10.00],"Puliyogare masala powder 30Gms": [7.00,10.00], 
-"Lemon Rice Powder": [10.00,15.00],"Fried Rice Powder": [14.00,20.00],"Chicken Ghee Roast Masala 25gms": [14.00,20.00], 
-"Chicken Kundapuri Masala 25gms": [14.00,20.00]
-};
-  numOne = document.getElementById("myInput").value;
-for(var i in j)
-{
- if(numOne==i){
-var val=j[numOne];
-  document.getElementById("answer").innerHTML = numOne+" Rate: ".fontcolor("red")+val[0]+"     MRP:".fontcolor("blue")+val[1];
-location.hash ="1";
- system.exit(0);
 
 
-} else
-{
-document.getElementById("answer").innerHTML="";
-}
-}
- 
-  return "u";
-}
 </script>
 
 </body>
