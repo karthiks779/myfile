@@ -1,103 +1,99 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <script
- src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-<link href="https://cdn.jsdelivr.net/npm/select2@4.0.13/dist/css/select2.min.css" rel="stylesheet" />
-<script src="https://cdn.jsdelivr.net/npm/select2@4.0.13/dist/js/select2.min.js"></script>
 
-<script>
-$(document).ready(function () {
-//change selectboxes to selectize mode to be searchable
-   $("select").select2();
-});
-</script>
-<style>
-table,td{
-  border: 1px solid black;
-}
-option {
-  font-size: 30px;
-}
-</style>
 
-</head>
+
 <body>
-
-
-<label for="browser">Customer name :</label>
-<select id="browser" name="browser">
-  <option value="micro">micro</option>
-<option value="Firefox">Firefox</option>
-<option value="Chrome">Chrome</option>
-<option value="Opera">Opera</option>
-<option value="Safari">Safari</option>
-</select>
-
-<label for="num">Amount:</label>
-<input style="font-size:20px" type="number" name="num" id="num">
-<button type="button" onclick="myFunction()">Try it</button>
-<p id="demo"></p>
-<table style="margin-top:-1rem; font-size:30px" id="myTable">
-  <tr>
-    <td>Row1 cell1</td>
-    <td>Row1 cell2</td>
-  </tr>
-  <tr>
-    <td>Row2 cell1</td>
-    <td>Row2 cell2</td>
-  </tr>
-  <tr>
-    <td>Row3 cell1</td>
-    <td>Row3 cell2</td>
-  </tr>
-</table>
-<br>
-
-<button type="button" onclick="myFunction()">Try it</button>
-<button onclick="window.print()">Print this page</button>
- <a onclick="this.href='data:text/html;charset=UTF-8,'+encodeURIComponent(document.documentElement.outerHTML)" href="#" download="page.html">Download</a>
-
-
-<script>
-  var sum=0;
-  var count=2;
-function myFunction() { 
-
-if((document.getElementById("num").value)!="")
-{
-  var table = document.getElementById("myTable");
-  var row = table.insertRow(0);
-  var cell1 = row.insertCell(0);
-  var cell2 = row.insertCell(1);
-  count++;
-if((document.getElementById("browser").value)=="micro")
-{
-  cell1.innerHTML =count-2;
-cell2.innerHTML =document.getElementById("num").value
-}
-else
-{
-  cell1.innerHTML = document.getElementById("browser").value
-  cell2.innerHTML =document.getElementById("num").value
-}
-  sum+=parseInt(document.getElementById("num").value);
-document.getElementById("num").value="";
-  document.getElementById("browser").value="micro";
-  document.getElementById("demo").innerHTML=sum;
-  document.getElementById("demo1").innerHTML=sum;
-}
-  if(count<15)
-  {
-  var h=""+count
-location.hash = h;
-}
-  return "u";
-}
     
-</script>
-<body onbeforeunload="return myFunction()">
-  <p style="margin-left:20rem; font-size:100px" id="demo1"></p>
-<form style="margin:2rem 2rem"> <input type="text" name="name" id="name" /> </form>
+
+    
+    
+
+
+    
+        
+        <p id="collectedData" >       </p>
+
+
+    
+messagesRef.remove()
+    <script src="https://www.gstatic.com/firebasejs/3.7.4/firebase.js"></script>
+   <script>
+        // Your Firebase configuration
+        const firebaseConfig = {
+            apiKey: "AIzaSyCx2K_Ji0mRflPnbxmqbVWv24O_sueerAg",
+            authDomain: "kk44-81f8e.firebaseapp.com",
+            databaseURL: "https://kk44-81f8e-default-rtdb.firebaseio.com",
+            projectId: "kk44-81f8e",
+            storageBucket: "kk44-81f8e.appspot.com",
+            messagingSenderId: "720386428137",
+            appId: "1:720386428137:web:946d8d62172c02557a3478",
+            measurementId: "G-WZY3Q18VFX"
+        };
+
+        // Initialize Firebase
+        firebase.initializeApp(firebaseConfig);
+
+        // Reference to messages collection
+        let messagesRef = firebase.database().ref('New55');
+
+        // Global array to hold messages
+        let messageArray = [];
+
+        // Form submission
+             
+            
+
+            // Get values
+            
+            let email="45";
+    let name=Date();
+            // Save message
+            saveMessage(name, email);
+            
+        
+
+
+        
+        // Save message to Firebase
+        function saveMessage(name, email) {
+            let newMessageRef = messagesRef.push();
+            newMessageRef.set({
+                name: name,
+                email: email,
+            }).then(() => {
+                // Add the new message to the array
+                messageArray.push({ name, email });
+                // Call the function to display data after saving
+                
+            });
+        }
+
+        // Function to retrieve and display data
+          l=[];
+        function displayMessages() {
+            // Clear the displayed data first
+           // document.getElementById('collectedData').innerHTML = '';
+
+            // Iterate through the messageArray to display each message
+            
+            // Display the messageArray in a formatted way
+          
+            l=messageArray.map(msg => ` ${msg.name}`);
+         
+        
+     document.getElementById("collectedData").innerHTML =l; 
+}
+        // Call to fetch existing messages from Firebase and populate the array
+        messagesRef.once('value', (snapshot) => {
+            snapshot.forEach(childSnapshot => {
+                let message = childSnapshot.val();
+                messageArray.push(message);
+            });
+            // Display existing messages
+            displayMessages();
+        });
+    </script>
 </body>
+
 </html>
