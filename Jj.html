@@ -1,0 +1,315 @@
+<!DOCTYPE html> 
+<html lang="en">
+     <head>
+          <meta charset="UTF-8">
+          <meta name="viewport" content="width=device-width, initial-scale=1.0">
+          <title>Customer Amount Tracker</title> 
+         <div class="search-container">
+	<input type="text" name="fruit" id="fruit" placeholder="Search fruit 🍎" onkeyup="myFunction1()">
+	<div class="suggestions">
+		<ul></ul>
+	</div>
+</div>
+<style>
+
+table,td{
+  border: 1px solid black;
+  font-size: 30px;
+}
+
+input {
+  border: 0 none;
+}
+
+.search-container {
+  width: 400px;
+  position: relative;
+  margin: 15px auto;
+}
+.search-container input,
+.search-container .suggestions {
+  width: 100%;
+  background: #fff;
+  text-align: left;
+}
+.search-container input {
+  background: rgba(255, 255, 255, 0.2);
+  height: 60px;
+  padding: 0 10px;
+}
+.search-container .suggestions {
+  position: absolute;
+  top: 60px;
+}
+
+ul {
+  display: none;
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.2);
+  max-height: 200px;
+  overflow-y: auto;
+}
+ul.has-suggestions {
+  display: block;
+}
+ul li {
+  padding: 10px;
+  cursor: pointer;
+  background: rgba(255, 255, 255, 0.2);
+}
+ul li:hover {
+  background-color: #e65c00;
+}
+
+input {
+  border-bottom: 2px solid #e65c00;
+}
+
+          
+          table, td { border: 1px solid black; }
+          option { font-size: 30px; } 
+          </style>
+          </head> 
+          <body> 
+       
+
+          <label for="num">Amount:</label>
+          <input style="font-size:20px" type="number" name="num" id="num"> 
+       
+          <button type="button" onclick="storeAmount()">Store Amount</button> 
+                   <input type="hidden" name="a" id="a"> 
+      <p id="totalAmount"></p> 
+            <input type="text" tabindex="-1" id="kl44">
+<button type="button" onclick="myFunction44()">Insert option</button>
+          <table id="myTable">
+               <tbody> <!-- Rows will be dynamically generated --> </tbody> 
+               </table> 
+                         <button type="button" onclick="resetStorage()">Reset Storage</button> 
+                 <p id="n44">g</p>
+        <p id="collectedData" >       </p>
+
+
+    
+messagesRef.remove()
+    <script src="https://www.gstatic.com/firebasejs/3.7.4/firebase.js"></script>
+   
+               <script>
+               j44=[];
+               
+
+
+               const input = document.querySelector('#fruit');
+const suggestions = document.querySelector('.suggestions ul');
+
+const fruit = ["Attavara canteen","Al amin samosa","St anna","Annapoorna","A1 Chinese food","hotel anchan","Amuruteshwara store",
+       "baikampady store","Baikampady bazar","bramha lingeshwara","bright store","badriya store","Hotel black pearl",
+       "Chelluru","chowta store","charvi store",
+        "Durga parameshwari",
+"Flora store",
+   "ganeshpura store",
+   "kuloor chicken shop","Kuloor mutton shop","hotel Kaveri","katipalla","kulshekar Chinese food","Krishna store",
+        "hosabettu",
+   "Lakshmi store",
+        "Mahalingeshwara store","Matrakshi nmpt","hotel mastya",
+       "National traders","NTK",
+       "Orange mart",
+       "Sri sai sundar",
+       "hotel varshita","Vinayaka store",
+       "Welcome super bazar"];
+        function displayMessages() {
+            // Clear the displayed data first
+           // document.getElementById('collectedData').innerHTML = '';
+
+            // Iterate through the messageArray to display each message
+            
+            // Display the messageArray in a formatted way
+          
+            l=messageArray.map(msg => ` ${msg.name}`);
+         
+        
+     document.getElementById("collectedData").innerHTML =l[(l.length)-1] 
+
+for(d=0;d<l.length;d++)
+{
+fruit.push(l[d])
+}
+document.getElementById("n44").innerHTML=l; 
+
+            
+        }
+
+function search(str) {
+	let results = [];	
+	let results1 = [];
+	let results2 = [];
+	const val = str.toLowerCase();
+      
+	for (i = 0; i < fruit.length; i++) {
+		if (fruit[i].toLowerCase().startsWith(val)) {
+      results1.push(fruit[i]);
+		}
+		else if (fruit[i].toLowerCase().indexOf(val) > -1) {
+			results2.push(fruit[i]);
+		}
+	}
+        results=results1.concat(results2);
+       
+	return results;
+	
+}
+
+function searchHandler(e) {
+	const inputVal = e.currentTarget.value;
+	let results = [];
+	if (inputVal.length > 0) {
+		results = search(inputVal);
+	}
+	showSuggestions(results, inputVal);
+}
+
+function showSuggestions(results, inputVal) {
+    
+    suggestions.innerHTML = '';
+
+	if (results.length > 0) {
+		for (i = 0; i < results.length; i++) {
+			let item = results[i];
+			// Highlights only the first match
+			// TODO: highlight all matches
+			const match = item.match(new RegExp(inputVal, 'i'));
+			item = item.replace(match[0], `<strong>${match[0]}</strong>`);
+			suggestions.innerHTML += `<li>${item}</li>`;
+		}
+		suggestions.classList.add('has-suggestions');
+	} else {
+		results = [];
+		suggestions.innerHTML = '';
+		suggestions.classList.remove('has-suggestions');
+	}
+}
+
+function useSuggestion(e) {
+	input.value = e.target.innerText;
+	input.focus();
+	suggestions.innerHTML = '';
+	suggestions.classList.remove('has-suggestions');
+}
+
+input.addEventListener('keyup', searchHandler);
+suggestions.addEventListener('click', useSuggestion);
+var sum = 0; // Generate 100 rows dynamically 
+               var tableBody = document.getElementById("myTable").getElementsByTagName('tbody')[0];
+               for (var i = 0; i < 100; i++) 
+               { var row = tableBody.insertRow(); 
+               var cell1 = row.insertCell(0);
+               var cell2 = row.insertCell(1); 
+               
+               cell1.textContent = i;
+               cell2.textContent =  i || 0; 
+               }
+               function displayMessages() {
+
+            l=messageArray.map(msg => ` ${msg.name}`);
+                        l2=messageArray.map(msg => ` ${msg.email}`);
+         
+               for(d1=0;d1<l.length;d1++)
+{
+tableBody.rows[d1].cells[0].textContent=l[d1];
+tableBody.rows[d1].cells[1].textContent=l2[d1];
+               sum+=parseInt(tableBody.rows[d1].cells[0].textContent)// Default to 0 if not set 
+               } // Store amount in localStorage 
+               count=0;
+               
+                  document.getElementById("totalAmount").innerHTML =sum 
+                  tableBody.rows[l.length-1].cells[0].scrollIntoView(); 
+               }      
+       function storeAmount() {
+  
+ 
+ if((document.getElementById("num").value)!="" && document.getElementById("fruit").value!="")
+ {
+ 
+            
+            let email=document.getElementById("fruit").value;
+    let name=document.getElementById("num").value;
+            // Save message
+            saveMessage(name, email);
+            
+        
+
+
+        
+        // Save message to Firebase
+        function saveMessage(name, email) {
+            let newMessageRef = messagesRef.push();
+            newMessageRef.set({
+                name: name,
+                email: email,
+            }).then(() => {
+                // Add the new message to the array
+                messageArray.push({ name, email });
+                // Call the function to display data after saving
+                
+            });
+        }
+
+
+}
+document.getElementById("num").value=""; 
+location.reload();
+}
+
+
+    
+    
+
+
+    
+        
+
+        // Your Firebase configuration
+        const firebaseConfig = {
+            apiKey: "AIzaSyCx2K_Ji0mRflPnbxmqbVWv24O_sueerAg",
+            authDomain: "kk44-81f8e.firebaseapp.com",
+            databaseURL: "https://kk44-81f8e-default-rtdb.firebaseio.com",
+            projectId: "kk44-81f8e",
+            storageBucket: "kk44-81f8e.appspot.com",
+            messagingSenderId: "720386428137",
+            appId: "1:720386428137:web:946d8d62172c02557a3478",
+            measurementId: "G-WZY3Q18VFX"
+        };
+
+        // Initialize Firebase
+        firebase.initializeApp(firebaseConfig);
+
+        // Reference to messages collection
+        let messagesRef = firebase.database().ref('New77');
+
+        // Global array to hold messages
+        let messageArray = [];
+
+        // Form submission
+             
+            
+
+
+
+        // Function to retrieve and display data
+      
+        // Call to fetch existing messages from Firebase and populate the array
+        messagesRef.once('value', (snapshot) => {
+            snapshot.forEach(childSnapshot => {
+                let message = childSnapshot.val();
+                messageArray.push(message);
+            });
+            // Display existing messages
+            displayMessages();
+        });
+
+
+ 
+               </script> 
+               </body>
+</html>
