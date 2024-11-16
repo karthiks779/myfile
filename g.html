@@ -75,7 +75,7 @@ input[type=submit] {
   </div>
   <input type="submit" onclick="add()">
 <p id="answer"></p>
-
+<p id="g">k</p>
 <script>
 function autocomplete(inp, arr) {
   /*the autocomplete function takes two arguments,
@@ -260,8 +260,8 @@ var countries= ["Hoppala","Hot Hoppala","Chicken Masala poweder hotel 500gms","C
   
 autocomplete(document.getElementById("myInput"), countries);
 
-
-</script>
+document.getElementById("g").innerHTML=(document.cookie).split(";")[(document.cookie).split(";").length-1]
+	</script>
 
 </body>
 </html>
