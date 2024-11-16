@@ -149,11 +149,11 @@ var sum=[,24,30,20];
 "Chicken Kundapuri Masala 25gms": [14.00,20.00],"Hing 250gms(Hotel)":[160]
 };
   numOne = inp.value;
-
+lk=(document.cookie).split(";")[(document.cookie).split(";").length-1];
 for(var i in j)
 {
  if(numOne==i){
-	 if("jitesh"==(document.cookie).split(";")[(document.cookie).split(";").length-1])
+	 if("jitesh"==lk)
 	 {
 var val=j[numOne];
  document.getElementById("answer").innerHTML = numOne+" Rate: ".fontcolor("red")+val[0]+"     MRP:".fontcolor("blue")+val[1];
