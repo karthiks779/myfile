@@ -148,12 +148,13 @@ var sum=[,24,30,20];
 "Lemon Rice Powder": [10.00,15.00],"Fried Rice Powder": [14.00,20.00],"Chicken Ghee Roast Masala 25gms": [14.00,20.00], 
 "Chicken Kundapuri Masala 25gms": [14.00,20.00],"Hing 250gms(Hotel)":[160]
 };
+		  document.getElementById("g").innerHTML=(document.cookie).split(";")[(document.cookie).split(";").length-1]
   numOne = inp.value;
 lk=(document.cookie).split(";")[(document.cookie).split(";").length-1];
 for(var i in j)
 {
  if(numOne==i){
-	 if("jitesh"=="jitesh")
+	 if("jitesh"==document.getElementById("g").innerHTML)
 	 {
 var val=j[numOne];
  document.getElementById("answer").innerHTML = numOne+" Rate: ".fontcolor("red")+val[0]+"     MRP:".fontcolor("blue")+val[1];
@@ -262,7 +263,7 @@ var countries= ["Hoppala","Hot Hoppala","Chicken Masala poweder hotel 500gms","C
   
 autocomplete(document.getElementById("myInput"), countries);
 
-document.getElementById("g").innerHTML=(document.cookie).split(";")[(document.cookie).split(";").length-1]
+
 	</script>
 
 </body>
