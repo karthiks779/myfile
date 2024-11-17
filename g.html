@@ -156,7 +156,7 @@ lk=(document.cookie).split(";")[(document.cookie).split(";").length-1];
 for(var i in j)
 {
  if(numOne==i){
-	 if(document.getElementById("g").innerHTML=="jitesh ")
+	 if(document.getElementById("g").innerHTML.substr(0,7)=="jitesh")
 	 {
 var val=j[numOne];
  document.getElementById("answer").innerHTML = numOne+" Rate: ".fontcolor("red")+val[0]+"     MRP:".fontcolor("blue")+val[1];
