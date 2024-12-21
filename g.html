@@ -161,11 +161,11 @@ var sum=[,24,30,20];
 };
 		  document.getElementById("g").innerHTML=document.cookie
   numOne = inp.value;
-lk=(document.cookie).split(";")[(document.cookie).split(";").length-1];
+lk=document.cookie;
 for(var i in j)
 {
  if(numOne==i){
-	 if(document.getElementById("g").innerHTML=="jitesh" || document.getElementById("g").innerHTML==" jitesh")
+	 if("jitesh"=="jitesh" || document.getElementById("g").innerHTML==" jitesh")
   {
 var val=j[numOne];
  document.getElementById("answer").innerHTML = numOne+" Rate: ".fontcolor("red")+val[0]+"     MRP:".fontcolor("blue")+val[1];
