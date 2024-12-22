@@ -78,7 +78,7 @@ input[type=submit] {
 <p id="g">k</p>
 	<p id="dd"></p>
 <script>
-	document.getElementById("g").innerHTML=document.cookie+"22";
+	document.getElementById("g").innerHTML=(document.cookie).split(";")[(document.cookie).split(";").length-1]
 function autocomplete(inp, arr) {
   /*the autocomplete function takes two arguments,
   the text field element and an array of possible autocompleted values:*/
@@ -159,13 +159,13 @@ var sum=[,24,30,20];
 "Chicken Masala Powder 100gms":[56],"Vegetable Masala Powder 100gms":[48],"Elaine Black Pepper 500gms Ist":[290],"Coriander Powder 500gms":[80],
 "Gobi Manchuri Masala 500gms":[190],"Jeera Powder 500gms [ Hotel ]":[245],"Samber Powder 500gms (Hotel)":[160],"Kasuri Methi 250gms":[90],
 };
-		  document.getElementById("g").innerHTML=document.cookie
+		  document.getElementById("g").innerHTML=(document.cookie).split(";")[(document.cookie).split(";").length-1]
   numOne = inp.value;
-lk=document.cookie;
+lk=(document.cookie).split(";")[(document.cookie).split(";").length-1];
 for(var i in j)
 {
  if(numOne==i){
-	 if("jitesh"=="jitesh" || document.getElementById("g").innerHTML==" jitesh")
+	 if(document.getElementById("g").innerHTML=="jitesh" || document.getElementById("g").innerHTML==" jitesh")
   {
 var val=j[numOne];
  document.getElementById("answer").innerHTML = numOne+" Rate: ".fontcolor("red")+val[0]+"     MRP:".fontcolor("blue")+val[1];
