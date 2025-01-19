@@ -219,44 +219,7 @@ location.hash ="1";
 }
 
 /*An array containing all the country names in the world:*/
-var countries= ["Hoppala","Hot Hoppala","Chicken Masala poweder hotel 500gms","Compound White pepper powder 500gms",
-	       "Chicken Masala 500gms Elaine","chilly powder 500gms popular","Kitchen King 200gms",
-	       "Elaine Compound Black pepper hotel 500gms ll","Panipuri Masala powder 200gms","Turmeric pounch 100gms"
-	       ,"Sambar powder 500gms","Garam Masala powder 500gms","Jeera masala 500gms hotel","Chole masala powder 500gms",
-	       "Chicken tikka masala 500gms","Chat masala 500gms","Turmeric powder","Biryani masala Rice 400gms",
-	       "Jeera powder 50gms","Garam Masala 50gms","Pepper powder 50gms","panipuri masala L","Kasmir chilly powder 100gms",
-	      "Butter pannir masala 100gms","chilly powder special(box)","Coriander powder 100gms pouch","Hotel rasam 500gms",
-	       "Elaine Garam Masala 500gms","Biryani masala 50gms",
-	      "Fish fry Masala 100gms","Fish fry/Kabab Masala 100gms","Fish Masala 100gms", 
-"Fish Pulimunchi 100gms","Biryani Rice 400gms","Chettinad Biryani Rice 500gms", 
-"Millet Health Mix 500gms","Chilli Powder pouch line 100GMS LINES","Turmric powder pouch line 100gms",
-"Avalakki Masala 18Gms","Bafat Powder","Biryani masala 15Gms",
-"Charmuri masala 18Gms","Chat Masala 18Gms","Chicken Kabab Masala 25gms",
-"Chicken Masala Powder 18Gms","Chicken Pulimunchi 18Gms","Chicken Pepper fry masala 25gms", 
-"Chicken Sukka masala","Chilli Powder 25gms","Chole Masala 18Gms", 
-"Coorg pork masala 18Gms","Coriander Powder 20gms","Egg curry masala 18Gms", 
-"Fish fry Masala 25gms","Fish Pulimunchi / Curry Masala 18Gms","Garam Masala 18Gms", 
-"Jeera Powder 18Gms","Lemon Chicken Kabab Powder 30Gms","Mutton Masala 18Gms", 
-"Panipuri masala 18Gms","Pannir masala 18Gms","Pasta/Noodles masala 18Gms", 
-"Pavbhaji Masala 18Gms","Pepper powder 15Gms","Chicken Pepper Kabab powder 30Gms", 
-"Rasam Powder 18Gms","Sambhar powder 18Gms","Sambhar powder (Medras)","Turmric powder 25gms", 
-"Vegetable Masala 18Gms","Vegetable pulav Masala 18Gms","Puliyogare masala powder 30Gms", 
-"Lemon Rice Powder","Fried Rice Powder","Chicken Ghee Roast Masala 25gms", 
-"Chicken Kundapuri Masala 25gms","Hing 250gms(Hotel)","Sambar powder 100gms [Box]",
-"Egg Masada Powder 500gms","Pepper Powder 500gms","Jeera Powder 500gms [Hotel]",
-"Panipuri Masala 500gms","Rasam Powder 500gms [Hotel]","Kitchen King 50Ogms",
-"Chole Masala Powder 500gms","Chicken Tikka Masala 500gms","Kashmiri Chilly Powder 500gms",
-"Asafoetida (Hing)Paste 500gm [Hotel]","Bafat Powder 100gms","Chole Masala Powder 100gms",
-"Chicken Sukka Masala 250gms","Vegetable pulav Masala 100gms","Biryani Masala 500gms",
-"Beef Dry/curry, Sukka Masala 500gms","Puliyogare Powder 500gms",
-"Samber Powder 500gms (Udupi)","Vegetable Pulav Masala 500gms","Noodels Masala 50gms",
-"Fish Masala Powder 500gms","Chicken Green Masala 50gms ","Pork Pepper Masala 50gms",
-"Mutton Masala Powder 100gms","Pavabhaji Masala 500gm", "Butter Pannir Masala 100gms", 
-"Garam Masala Powder 100gms","Ragi Powder 400gms","Chicken Masala Powder 100gms","Vegetable Masala Powder 100gms",
-"Elaine Black Pepper 500gms Ist","Coriander Powder 500gms","Gobi Manchuri Masala 500gms",
-"Jeera Powder 500gms [ Hotel ]","Samber Powder 500gms (Hotel)","Kasuri Methi 250gms", "Hotel Bafat Powder 250gms",
-"Beef Dry/curry Sukka Masala 250gms","Elaine Asafoetida(Hing) Paste 250gms"
-];
+var countries=Object.keys(j);
 /*initiate the autocomplete function on the "myInput" element, and pass along the countries array as possible autocomplete values:*/
   
 autocomplete(document.getElementById("myInput"), countries);
