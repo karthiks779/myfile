@@ -1,3 +1,4 @@
+
 function capitalise()
  {
   
@@ -18,3 +19,4 @@ function capitalise()
        
       } document.getElementById("answer").value =gh;
 }
+document.getElementById("kk").innerHTML=44;
