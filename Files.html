@@ -1,0 +1,41 @@
+
+<html>
+  <body>
+  <h1>Hello World</h1>
+  <p id="hj"></p>
+<input id="jj">
+<button onclick="run()"></button>
+  <script>
+function run()
+{
+     h=Object.keys(j);
+g=document.getElementById("jj").value
+   g=g.split(",")  
+l=[]; 
+for(i=0;i<g.length;i++)
+{
+   l.push(g[i]);
+}
+     for(j=0;j<g.length;j++)
+      {
+          
+      for(i=0;i<h.length;i++)
+      {
+
+       if(h[i]==g[j])
+       {
+          delete  g[j]
+         
+       
+      }
+      }
+      
+      }
+      for(i=0;i<g.length;i++)
+      {
+     document.getElementById("hj").innerHTML+=l[g.indexOf(g.filter(item=>item)[i])]+","
+      }
+}
+     </script>
+  </body>
+  </html>
