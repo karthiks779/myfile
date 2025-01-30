@@ -24,12 +24,13 @@ var j={"Hoppala":[22,35],"Hot Hoppala":[24,40],"Chicken Masala poweder hotel 500
 	"Pepper Powder 500gms":[480],"Jeera Powder 500gms [Hotel]": [245],"Panipuri Masala 500gms": [280],"Rasam Powder 500gms [Hotel]":[160],
 	"Kitchen King 50Ogms": [270],"Chole Masala Powder 500gms": [230],"Chicken Tikka Masala 500gms": [160],"Kashmiri Chilly Powder 500gms": [350],
 "Asafoetida (Hing)Paste 500gm [Hotel]": [210],"Bafat Powder 100gms": [56],"Chole Masala Powder 100gms": [,58],"Chicken Sukka Masala 250gms": [,175],
-	"Vegetable pulav Masala 100gms": [48,60],"Biryani Masala 500gms" :[400,310],"Beef Dry/curry Sukka Masala 500gms" :[290],
+	"Vegetable pulav Masala 100gms": [48,60],"Biryani Masala 500gms" :[310,400],"Beef Dry/curry Sukka Masala 500gms" :[290],
 "Puliyogare Powder 500gms": [150],"Samber Powder 500gms (Udupi)": [205],"Vegetable Pulav Masala 500gms": [230],"Noodels Masala 50gms": [28],
 "Fish Masala Powder 500gms": [270],"Chicken Green Masala 50gms ":[36],"Pork Pepper Masala 50gms":[36],"Mutton Masala Powder 100gms":[56],
 "Pavabhaji Masala 500gm":[230], "Butter Pannir Masala 100gms": [48], "Garam Masala Powder 100gms":[50],"Ragi Powder 400gms":[36],
-"Chicken Masala Powder 100gms":[56],"Vegetable Masala Powder 100gms":[48],"Elaine Black Pepper 500gms Ist":[290],"Coriander Powder 500gms":[80],
+"Chicken Masala Powder 100gms":[56,70],"Vegetable Masala Powder 100gms":[48,100],"Elaine Black Pepper 500gms Ist":[290],"Coriander Powder 500gms":[80],
 "Gobi Manchuri Masala 500gms":[190],"Jeera Powder 500gms [ Hotel ]":[245],"Samber Powder 500gms (Hotel)":[160],"Kasuri Methi 250gms":[90],
-"Bafat Powder 250gms":[140],"Beef Dry/curry Sukka Masala 250gms":[145],"Elaine Asafoetida(Hing) Paste 250gms":[175],"1k Chakra (papad)":[110], 
-"Panipuri Masala 50gms":[28]
+"Bafat Powder 250gms":[140,175],"Beef Dry/curry Sukka Masala 250gms":[145],"Elaine Asafoetida(Hing) Paste 250gms":[175,300],"1k Chakra (papad)":[110], 
+"Panipuri Masala 50gms":[28],"Kasuri Methi 25gms":[,30],"Turmeric Powder 100gms":[,35],"Coriander Powder 250gms":[,150],"Pepper Powder 250gms":[240,300],
+ "Charmuri Masala 250gms":[83],"Chilly Powder 250gms":[60]    
 };
