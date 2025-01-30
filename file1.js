@@ -32,5 +32,5 @@ var j={"Hoppala":[22,35],"Hot Hoppala":[24,40],"Chicken Masala poweder hotel 500
 "Gobi Manchuri Masala 500gms":[190],"Jeera Powder 500gms [ Hotel ]":[245],"Samber Powder 500gms (Hotel)":[160],"Kasuri Methi 250gms":[90],
 "Bafat Powder 250gms":[140,175],"Beef Dry/curry Sukka Masala 250gms":[145],"Elaine Asafoetida(Hing) Paste 250gms":[175,300],"1k Chakra (papad)":[110], 
 "Panipuri Masala 50gms":[28],"Kasuri Methi 25gms":[,30],"Turmeric Powder 100gms":[,35],"Coriander Powder 250gms":[,150],"Pepper Powder 250gms":[240,300],
- "Charmuri Masala 250gms":[83],"Chilly Powder 250gms":[60]    
+ "Charmuri Masala 250gms":[83],"Chilly Powder 250gms":[60],"Bafat Powder 250gms":[,140],"Puliyogare Powder 100gms":[25,40]
 };
