@@ -1,8 +1,8 @@
-var j={"Hoppala":[22,35],"Hot Hoppala":[24,40],"Chicken Masala poweder hotel 500gms":[140],"Compound White pepper powder 500gms":[70],
+var j={"Hoppala":[22,35],"Hot Hoppala":[24,40],"Chicken Masala poweder hotel 500gms":[140,350],"Compound White pepper powder 500gms":[70],
 	"Chicken Masala 500gms Elaine":[95],"chilly powder 500gms popular":[85],"Kitchen King 200gms":[112],"Elaine Compound Black pepper hotel 500gms ll":[90],
 	"Panipuri Masala powder 200gms":[112],"Turmeric pounch 100gms":[24,40],"Sambar powder 500gms":[160],"Garam Masala powder 500gms":[270],
 	"Jeera masala 500gms hotel":[290],"Chole masala powder 500gms":[230],"Chicken tikka masala 500gms":[160],"Chat masala 500gms":[170]
-	,"Turmeric powder":[110],"Biryani masala Rice 400gms":[110,145],"Jeera powder 50gms":[40],"Garam Masala 50gms":[32,40],"Pepper powder 50gms":[50],
+	,"Turmeric Powder 500gms (Hotel)":[110, 250],"Biryani masala Rice 400gms":[110,145],"Jeera powder 50gms":[40],"Garam Masala 50gms":[32,40],"Pepper powder 50gms":[50],
 	"panipuri masala L":[8,12],"Kasmir chilly powder 100gms":[56,70],"Butter pannir masala 100gms":[48,60],"chilly powder special(box)":[30,40],
        "Coriander powder 100gms pouch":[40,16],"Hotel rasam 500gms":[160],"Elaine Garam Masala 500gms":[90], "Biryani masala 50gms":[36,45],
        "Fish fry Masala 100gms":[32.00,40.00],"Fish fry/Kabab Masala 100gms": [32.00, 40.00],"Fish Masala 100gms": [48.00,60.00], 
@@ -33,4 +33,6 @@ var j={"Hoppala":[22,35],"Hot Hoppala":[24,40],"Chicken Masala poweder hotel 500
 "Bafat Powder 250gms":[140,175],"Beef Dry/curry Sukka Masala 250gms":[145],"Elaine Asafoetida(Hing) Paste 250gms":[175,300],"1k Chakra (papad)":[110], 
 "Panipuri Masala 50gms":[28],"Kasuri Methi 25gms":[,30],"Turmeric Powder 100gms":[,35],"Coriander Powder 250gms":[,150],"Pepper Powder 250gms":[240,300],
  "Charmuri Masala 250gms":[83],"Chilly Powder 250gms":[60],"Bafat Powder 250gms":[,140],"Puliyogare Powder 100gms":[25,40],"Asafoetida (Hing) Powder 500gms (Hotel)":[275],
-  "Chicken Pulimunchi 100gms":[70],"Samber Powder 100gms (Udupi)":[46]      };
+  "Chicken Pulimunchi 100gms":[70],"Samber Powder 100gms (Udupi)":[46],"Turmeric Powder 200gms (Hotel)":[48,100],"Turmeric powder 250gms (Hotel)":[55,125],
+      "Chicken Masala Powder 200gms (Hotel)":[140],"Chicken Masala Powder 250gms (Hotel)":[175],"Jeera Powder 100gms":[60,90] };
+ 
