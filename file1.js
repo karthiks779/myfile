@@ -7,7 +7,7 @@ var j={"Hoppala":[22,35],"Hot Hoppala":[24,40],"Chicken Masala poweder hotel 500
        "Coriander powder 100gms pouch":[40,16],"Hotel rasam 500gms":[160],"Elaine Garam Masala 500gms":[90], "Biryani masala 50gms":[36,45],
        "Fish fry Masala 100gms":[32.00,40.00],"Fish fry/Kabab Masala 100gms": [32.00, 40.00],"Fish Masala 100gms": [48.00,60.00], 
 "Fish Pulimunchi 100gms": [48.00,60.00],"Biryani Rice 400gms": [96.00,130.00],"Chettinad Biryani Rice 500gms": [140.00,105.00], 
-"Millet Health Mix 500gms": [170.00,220.00],"Chilli Powder pouch line 100GMS LINES": [16.00,40.00],"Turmric powder pouch line 100gms": [18.00,40.00],
+"Millet Health Mix 500gms": [170.00,220.00],"Chilli Powder pouch line 100GMS LINES": [18,40,"2024-Jan",17,40,"Feb-Cont"],"Turmric powder pouch line 100gms": [18.00,40.00],
 "Avalakki Masala 18Gms": [7.00,10.00],"Bafat Powder":  [7.00,10.00],"Biryani masala 15Gms": [7.00,10.00],
 "Charmuri masala 18Gms": [7.00,10.00],"Chat Masala 18Gms": [7.00,10.00],"Chicken Kabab Masala 25gms": [6.00,10.00],
 "Chicken Masala Powder 18Gms": [7.00,10.00],"Chicken Pulimunchi 18Gms": [7.00,10.00],"Chicken Pepper fry masala 25gms": [14.00,20.00], 
