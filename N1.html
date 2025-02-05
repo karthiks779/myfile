@@ -77,16 +77,17 @@ input[type=submit] {
     <tr>
         <td></td>
         <td>65</td>
-
+        <td></td>
     </tr>
       <tr>
         <td>44</td>
         <td></td>
+	<td></td>      
     </tr>
       <tr>
         <td></td>
         <td></td>
-        
+        <td></td>
     </tr>
     
    </tbody>
@@ -162,9 +163,12 @@ for(var i in j)
   {
 var val=j[numOne];
  document.getElementById("answer").innerHTML = numOne+" Rate: ".fontcolor("red")+val[0]+"     MRP:".fontcolor("blue")+val[1];
- document.getElementById("my").rows[0].cells[1].textContent = val[0]; 
- document.getElementById("my").rows[0].cells[0].textContent = val[2]; 
- 
+for(i=0;i<5;i++)
+	{
+	  document.getElementById("my").rows[i].cells[0].textContent = val[i×3]; 
+		document.getElementById("my").rows[i].cells[1].textContent = val[i×3+1]; 
+ document.getElementById("my").rows[i].cells[2].textContent = val[i×3+2]; 
+	}
 	 } /*else if(document.getElementById("g").innerHTML=="jitesh")
 	 {
 		 document.getElementById("answer").innerHTML = numOne+" Rate: ".fontcolor("red")+val[0]+"     MRP:".fontcolor("blue")+val[1]; 
