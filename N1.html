@@ -80,8 +80,8 @@ input[type=submit] {
         <td></td>
     </tr>
       <tr>
-        <td></td>
-        <td></td>
+        <td>44</td>
+        <td>34</td>
 	<td></td>      
     </tr>
       <tr>
@@ -161,51 +161,46 @@ for(var i in j)
  if(numOne==i){
 	 if(document.getElementById("g").innerHTML!="jitesh" || document.getElementById("g").innerHTML==" jitesh")
   {
+      
 var val=j[numOne];
- for(i=0;i<document.getElementById("my").rows.length;i++)
- {
-     document.getElementById("my").rows[i].cells[0].textContent="";
-     document.getElementById("my").rows[i].cells[1].textContent="";
-     document.getElementById("my").rows[i].cells[2].textContent="";
- }
- document.getElementById("answer").innerHTML = numOne+" Rate: ".fontcolor("red")+val[0]+"     MRP:".fontcolor("blue")+val[1];
-
- /*row=document.getElementById("my").insertRow(document.getElementById("my").rows.length)
+ row=document.getElementById("my").insertRow(document.getElementById("my").rows.length)
       row.insertCell(0).innerHTML=""; 
       row.insertCell(1).innerHTML=""
-      row.insertCell(2).innerHTML="";  */
-for(i=0;i<val.length/2;i++)
+      row.insertCell(2).innerHTML="";  
+      row1=document.getElementById("my").insertRow(document.getElementById("my").rows.length)
+      row1.insertCell(0).innerHTML=""; 
+      row1.insertCell(1).innerHTML="";
+      row1.insertCell(2).innerHTML="";  
+ document.getElementById("answer").innerHTML = numOne+" Rate: ".fontcolor("red")+val[0]+"     MRP:".fontcolor("blue")+val[1];
+for(i=0;i<7;i++)
 	{
 	  document.getElementById("my").rows[i].cells[0].textContent = val[i*3]; 
 		document.getElementById("my").rows[i].cells[1].textContent = val[i*3+1]; 
  document.getElementById("my").rows[i].cells[2].textContent = val[i*3+2]; 
-	
-	
+		if(document.getElementById("my").rows[i].cells[1].textContent=="")
+ {
+     document.getElementById("my").deleteRow(i); 
+      
+ }
+ if(document.getElementById("my").rows[i].cells[1].textContent=="")
+ {document.getElementById("g").innerHTML+=""+i;
+     document.getElementById("my").deleteRow(i); 
+      //document.getElementById("g").innerHTML= 
+ }
+		 
 	}
-	/*removeEmptyRows();
-	function removeEmptyRows() {
-	 let table = document.getElementById("my"); 
-	 let rows = table.rows; 
-	 for(let i = rows.length - 1; i >= 0; i--)
-	 {
-	 let empty = true;
-	 for(let j = 0; j < rows[i].cells.length; j++) 
-	 {
-	 if (rows[i].cells[j].textContent.trim() !== "")
-	 { empty = false; break; }
-	 }
-	 if(empty) {
-	 table.deleteRow(i);
-	 }
-	 }
-	 }
-	 removeEmptyRows();*/
-
 	 } /*else if(document.getElementById("g").innerHTML=="jitesh")
 	 {
 		 document.getElementById("answer").innerHTML = numOne+" Rate: ".fontcolor("red")+val[0]+"     MRP:".fontcolor("blue")+val[1]; 
 	 }*/
-	 
+	 for(k=0;k<4;k++) 
+		 {
+	 if(document.getElementById("my").rows[k].cells[1].textContent==null)
+ {
+     document.getElementById("my").deleteRow(k); 
+     
+ }
+		 }
 location.hash ="1";
  system.exit(0);
 
@@ -291,4 +286,4 @@ autocomplete(document.getElementById("myInput"), countries);
 	</script>
 
 </body>
-</html>
+	</html>
