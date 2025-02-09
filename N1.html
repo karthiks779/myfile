@@ -161,6 +161,10 @@ for(var i in j)
  if(numOne==i){
 	 if(document.getElementById("g").innerHTML=="jitesh" || document.getElementById("g").innerHTML==" jitesh")
   {
+	  row=document.getElementById("my").insertRow(document.getElementById("my").rows.length)
+	  row.insertCell(0).innerHTML="";
+	  row.insertCell(1).innerHTML="";
+	  row.insertCell(2).innerHTML="";
 var val=j[numOne];
  document.getElementById("answer").innerHTML = numOne+" Rate: ".fontcolor("red")+val[0]+"     MRP:".fontcolor("blue")+val[1];
 for(i=0;i<5;i++)
