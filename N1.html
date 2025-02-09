@@ -170,10 +170,10 @@ var val=j[numOne];
  }
  document.getElementById("answer").innerHTML = numOne+" Rate: ".fontcolor("red")+val[0]+"     MRP:".fontcolor("blue")+val[1];
 
- row=document.getElementById("my").insertRow(document.getElementById("my").rows.length)
+ /*row=document.getElementById("my").insertRow(document.getElementById("my").rows.length)
       row.insertCell(0).innerHTML=""; 
       row.insertCell(1).innerHTML=""
-      row.insertCell(2).innerHTML="";  
+      row.insertCell(2).innerHTML="";  */
 for(i=0;i<val.length/2;i++)
 	{
 	  document.getElementById("my").rows[i].cells[0].textContent = val[i*3]; 
