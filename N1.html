@@ -166,6 +166,10 @@ for(var i in j)
 	  row.insertCell(1).innerHTML="";
 	  row.insertCell(2).innerHTML="";
 var val=j[numOne];
+	  for(k=0;k<document.getElementById("my").rows.length;k++) 
+		 {
+	 document.getElementById("my").rows[k].cells[1].innerHTML="";
+		 }
  document.getElementById("answer").innerHTML = numOne+" Rate: ".fontcolor("red")+val[0]+"     MRP:".fontcolor("blue")+val[1];
 for(i=0;i<val.length/2;i++)
 	{
