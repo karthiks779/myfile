@@ -61,25 +61,50 @@ input[type=submit] {
   color: #ffffff; 
 }
 </style>
+
 </head>     
 <body>
-
+<style> 
+	table , td {
+    border: 1px solid black;
+}
+</style>
 <h2>Autocomplete</h2>
 
 <p>Start typing:</p>
-
+	<p id="answer"></p>
+<table id="my">
+    <tbody>
+    <tr>
+        <td></td>
+        <td>65</td>
+        <td></td>
+    </tr>
+      <tr>
+        <td>44</td>
+        <td>34</td>
+	<td></td>      
+    </tr>
+      <tr>
+        <td></td>
+        <td></td>
+        <td></td>
+    </tr>
+    
+   </tbody>
+</table>
 <!--Make sure the form has the autocomplete function switched off:-->
 
   <div class="autocomplete" style="width:300px;">
     <input id="myInput" type="text" name="myCountry" placeholder="Country">
   </div>
   <input type="submit" onclick="add()">
-<p id="answer"></p>
+
 <p id="g">k</p>
 	<p id="dd"></p>
 	<script src="file1.js"></script>
 <script>
-	
+	document.getElementById("my").rows[0].cells[0].textContent = "45"; 
 	document.getElementById("g").innerHTML=(document.cookie).split(";")[(document.cookie).split(";").length-1]
 function autocomplete(inp, arr) {
   /*the autocomplete function takes two arguments,
@@ -137,12 +162,56 @@ for(var i in j)
  if(numOne==i){
 	 if(document.getElementById("g").innerHTML=="jitesh" || document.getElementById("g").innerHTML==" jitesh")
   {
+	  row=document.getElementById("my").insertRow(document.getElementById("my").rows.length)
+	  row.insertCell(0).innerHTML="";
+	  row.insertCell(1).innerHTML="";
+	  row.insertCell(2).innerHTML="";
 var val=j[numOne];
+	  for(k=0;k<document.getElementById("my").rows.length;k++) 
+		 {
+	 document.getElementById("my").rows[k].cells[1].innerHTML="";
+		 }
  document.getElementById("answer").innerHTML = numOne+" Rate: ".fontcolor("red")+val[0]+"     MRP:".fontcolor("blue")+val[1];
+for(i=0;i<val.length/2;i++)
+	{
+	  document.getElementById("my").rows[i].cells[0].textContent = val[i*3]; 
+		document.getElementById("my").rows[i].cells[1].textContent = val[i*3+1]; 
+ document.getElementById("my").rows[i].cells[2].textContent = val[i*3+2]; 
+		
+		 
+	}
+	  	for(i=0;i<document.getElementById("my").rows.length;i++)
+	{
+		if(document.getElementById("my").rows[i].cells[0].textContent=="")
+ {
+     document.getElementById("my").deleteRow(i); 
+ }
+      if(document.getElementById("my").rows[i].cells[0].textContent=="")
+ {
+     document.getElementById("my").deleteRow(i); 
+     
+ 
+ }
+		 if(document.getElementById("my").rows[i].cells[1].textContent=="")
+ {
+     document.getElementById("my").deleteRow(i); 
+     
+ 
+ }
+		 
+	 }
 	 } /*else if(document.getElementById("g").innerHTML=="jitesh")
 	 {
 		 document.getElementById("answer").innerHTML = numOne+" Rate: ".fontcolor("red")+val[0]+"     MRP:".fontcolor("blue")+val[1]; 
 	 }*/
+	 for(k=0;k<4;k++) 
+		 {
+	 if(document.getElementById("my").rows[k].cells[1].textContent==null)
+ {
+     document.getElementById("my").deleteRow(k); 
+     
+ }
+		 }
 location.hash ="1";
  system.exit(0);
 
@@ -228,4 +297,4 @@ autocomplete(document.getElementById("myInput"), countries);
 	</script>
 
 </body>
-</html>
+	</html>
