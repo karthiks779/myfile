@@ -224,6 +224,23 @@ tableBody.rows[d1].cells[1].textContent=l2[d1];
                
                   document.getElementById("totalAmount").innerHTML =sum 
                   tableBody.rows[l.length-1].cells[0].scrollIntoView(); 
+		       for(i=0;i<100;i++)
+{
+    if(isNaN(document.getElementById("myTable").rows[i].cells[1].textContent)==true)
+    {
+        document.getElementById("jj").innerHTML=i+1
+    }
+}
+k=document.getElementById("jj").innerHTML;
+for(i=k;i<100;i++)
+{
+ if(document.getElementById("myTable").rows[k].cells[1].textContent==""+i)
+ {
+     document.getElementById("myTable").deleteRow(k); 
+     
+ 
+ }
+}
                }      
        function storeAmount() {
   
