@@ -21,7 +21,7 @@ var j={"Hoppala":[22,35],"Hot Hoppala":[24,40],"Chicken Masala poweder hotel 500
 "Vegetable Masala 18Gms": [7.00,10.00],"Vegetable pulav Masala 18Gms": [7.00,10.00],"Puliyogare masala powder 30Gms": [7.00,10.00], 
 "Lemon Rice Powder": [10.00,15.00],"Fried Rice Powder": [14.00,20.00],"Chicken Ghee Roast Masala 25gms": [14.00,20.00], 
 "Chicken Kundapuri Masala 25gms": [14.00,20.00],"Asafoetida Hing 250gms(Hotel)":[200,160],"Samber powder 100gms [Box]": [46,58],"Egg Masala Powder 500gms":[300,230],
-	"Pepper Powder 500gms":[480],"Jeera Powder 500gms [Hotel]": [245],"Panipuri Masala 500gms": [280],"Rasam Powder 500gms [Hotel]":[160],
+	"Pepper Powder 500gms":[600,480],"Jeera Powder 500gms [Hotel]": [245],"Panipuri Masala 500gms": [280],"Rasam Powder 500gms [Hotel]":[160],
 	"Kitchen King 50Ogms": [270],"Chole Masala Powder 500gms": [230],"Chicken Tikka Masala 500gms": [160],"Kashmiri Chilly Powder 500gms": [350],
 "Asafoetida (Hing)Paste 500gm [Hotel]": [210],"Bafat Powder 100gms": [56],"Chole Masala Powder 100gms": [,58],"Chicken Sukka Masala 250gms": [,175],
 	"Vegetable pulav Masala 100gms": [48,60],"Biryani Masala 500gms" :[310,400],"Beef Dry/curry Sukka Masala 500gms" :[290],
@@ -32,8 +32,8 @@ var j={"Hoppala":[22,35],"Hot Hoppala":[24,40],"Chicken Masala poweder hotel 500
 "Gobi Manchuri Masala 500gms":[190],"Jeera Powder 500gms [ Hotel ]":[245],"Samber Powder 500gms (Hotel)":[160],"Kasuri Methi 250gms":[90],
 "Bafat Powder 250gms":[140,175],"Beef Dry/curry Sukka Masala 250gms":[145],"Elaine Asafoetida(Hing) Paste 250gms":[175,300],"1k Chakra (papad)":[110], 
 "Panipuri Masala 50gms":[28],"Kasuri Methi 25gms":[25,30],"Turmeric Powder 100gms":[50,35],"Coriander Powder 250gms":[,150],"Pepper Powder 250gms":[240,300],
- "Charmuri Masala 250gms":[83],"Chilly Powder 250gms":[60],"Bafat Powder 250gms":[,140],"Puliyogare Powder 100gms":[25,40],"Asafoetida (Hing) Powder 500gms (Hotel)":[275],
+ "Charmuri Masala 250gms":[83],"Chilly Powder 250gms":[60,150],"Bafat Powder 250gms":[,140],"Puliyogare Powder 100gms":[25,40],"Asafoetida (Hing) Powder 500gms (Hotel)":[275],
   "Chicken Pulimunchi 100gms":[70],"Samber Powder 100gms (Udupi)":[46],"Turmeric Powder 200gms (Hotel)":[48,100],"Turmeric powder 250gms (Hotel)":[55,125],
       "Chicken Masala Powder 200gms (Hotel)":[65,140],"Chicken Masala Powder 250gms (Hotel)":[70,175],"Jeera Powder 100gms":[60,90],"Garam Masala Powder 500gms(Hotel)":[135,300],
-      "Pickel Powder 100gms":[36,45],"Stew Powder 100gms":[36,45],"Chicken Sukka masala 100gms":[56,70],"Biryani Masala 500gms":[,200]};
+      "Pickel Powder 100gms":[36,45],"Stew Powder 100gms":[36,45],"Chicken Sukka masala 100gms":[56,70],"Biryani Masala 500gms":[,200],"250gms noodles masala":[350,140]};
  
