@@ -1,11 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
-<p id="jj">n</p>
+
 <head>
     <meta charset="UTF-8">
     <title>Stock Input Demo</title>
     <style>
         #stockInput, #updateBtn {
+
             display: none;
             margin-top: 10px;
         }
@@ -19,10 +20,10 @@
         }
     </style>
 </head>
-
 <body>
 
 <h2>Stock Manager</h2>
+
 <input type="text" id="searchItem" oninput="updateInputBox()" placeholder="Type item name...">
 
 <input type="number" id="stockInput">
@@ -60,87 +61,85 @@
         <!-- History entries will appear here -->
     </tbody>
 </table>
-<p id="jj">n</p>
 <style>
 
 table,td{
-  border: 1px solid black;
-  font-size: 30px;
+  border: 1px solid black;
+  font-size: 30px;
 }
 
 input {
-  border: 0 none;
+  border: 0 none;
 }
 
 .search-container {
-  width: 400px;
-  position: relative;
-  margin: 15px auto;
+  width: 400px;
+  position: relative;
+  margin: 15px auto;
 }
 .search-container input,
 .search-container .suggestions {
-  width: 100%;
-  background: #fff;
-  text-align: left;
+  width: 100%;
+  background: #fff;
+  text-align: left;
 }
 .search-container input {
-  background: rgba(255, 255, 255, 0.2);
-  height: 60px;
-  padding: 0 10px;
+  background: rgba(255, 255, 255, 0.2);
+  height: 60px;
+  padding: 0 10px;
 }
 .search-container .suggestions {
-  position: absolute;
-  top: 60px;
+  position: absolute;
+  top: 60px;
 }
 
 ul {
-  display: none;
-  list-style-type: none;
-  padding: 0;
-  margin: 0;
-  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.2);
-  max-height: 200px;
-  overflow-y: auto;
+  display: none;
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.2);
+  max-height: 200px;
+  overflow-y: auto;
 }
 ul.has-suggestions {
-  display: block;
+  display: block;
 }
 ul li {
-  padding: 10px;
-  cursor: pointer;
-  background: rgba(255, 255, 255, 0.2);
+  padding: 10px;
+  cursor: pointer;
+  background: rgba(255, 255, 255, 0.2);
 }
 ul li:hover {
-  background-color: #e65c00;
+  background-color: #e65c00;
 }
 
 input {
-  border-bottom: 2px solid #e65c00;
+  border-bottom: 2px solid #e65c00;
 }
 
-          
-          table, td { border: 1px solid black; }
-          option { font-size: 30px; } 
-          </style>
-          </head> 
-           
-       
-
-                   <input type="hidden" name="a" id="a"> 
-      
-          <table id="myTable">
-               <tbody> <!-- Rows will be dynamically generated --> </tbody> 
-               </table> 
-                         <button type="button" onclick="resetStorage()">Reset Storage</button> 
-    
-               
-<script>
+          
+          table, td { border: 1px solid black; }
+          option { font-size: 30px; } 
+          </style>
+          </head> 
+          <body> 
+       
+                   <input type="hidden" name="a" id="a"> 
+      <p id="totalAmount"></p> 
+          <table id="myTable">
+               <tbody> <!-- Rows will be dynamically generated --> </tbody> 
+               </table> 
+                         <button type="button" onclick="resetStorage()">Reset Storage</button> 
+    
+               <script>
 for(i=0;i<13;i++)
-{
+                {
 
 document.getElementById("kk").rows[i].cells[1].textContent=localStorage.getItem("k"+i);
-    }
-    function updateInputBox() {
+                 }
+    function updateInputBox() 
+{ // 1
         let searchValue = document.getElementById("searchItem").value.toLowerCase();
         let stockInput = document.getElementById("stockInput");
         let updateBtn = document.getElementById("updateBtn");
@@ -158,7 +157,8 @@ document.getElementById("kk").rows[i].cells[1].textContent=localStorage.getItem(
 "badeSompu":"BadeSompu",
 "pepper":"Pepper"};
 
-        if (stockMapping[searchValue]) {
+        if (stockMapping[searchValue]) 
+  { // 2
             let stockId = stockMapping[searchValue];
             
 
@@ -167,118 +167,115 @@ document.getElementById("kk").rows[i].cells[1].textContent=localStorage.getItem(
             stockInput.dataset.itemName = searchValue;
             stockInput.style.display = "inline";
             updateBtn.style.display = "inline";
-        } 
-    }
+        } // 2
+    } // 1
 
-    function updateStockFromInput() {
+    function updateStockFromInput() { // 3
+if(document.getElementById("searchItem").value!="")
+{ // 12
         let stockInput = document.getElementById("stockInput");
         let stockId = stockInput.dataset.target;
         let itemName = stockInput.dataset.itemName;
         let newStock = stockInput.value;
-
-        
-            document.getElementById(stockId).innerText = parseInt(document.getElementById(stockId).innerText)-parseInt(newStock);
+document.getElementById(stockId).innerText = parseInt(document.getElementById(stockId).innerText)-parseInt(newStock) || 0;
             addToHistory(itemName, newStock);
-      document.getElementById("stockInput").value="";
-for(i=0;i<13;i++)
-{
-localStorage.setItem("k"+i,document.getElementById("kk").rows[i].cells[1].textContent)
-document.getElementById("kk").rows[i].cells[1].textContent=localStorage.getItem("k"+i);
-    }
-document.getElementById("jj").innerHTML=localStorage.getItem("k1")
-}
-document.getElementById("jj").innerHTML=localStorage.getItem("k1")
-    function addToHistory(item, stock) {
+      document.getElementById("stockInput")="5";
+
+
+
+    function addToHistory(item, stock) 
+{ // 4
+if(document.getElementById("searchItem").value!="")
+{ // 11
         let historyTable = document.getElementById("historyTable").getElementsByTagName("tbody")[0];
         let newRow = historyTable.insertRow();
 
         let cellItem = newRow.insertCell(0);
         let cellStock = newRow.insertCell(1);
         let cellTime = newRow.insertCell(2);
-
+        document.getElementById("stockInput").value="" 
+        document.getElementById("searchItem").value="" 
+         document.getElementById("stockInput").style.display = "none";
         cellItem.innerText = item.charAt(0).toUpperCase() + item.slice(1);
         cellStock.innerText = stock;
         cellTime.innerText = new Date().toLocaleString().slice(0,5);
-count=localStorage.getItem("p"); 
-                   
-                  
-                   var a = document.getElementById("a").value; 
-               var c= item.charAt(0).toUpperCase() + item.slice(1);
-        var b= stock;
-        var d = new Date().toLocaleString().slice(0,5);
-               if (a < 0 || a >= 100) { alert("Please enter a valid row number between 0 and 99.");
-               return; } 
-          
-               localStorage.setItem("gh-1"+a,c) 
-               localStorage.setItem("gh" + a, b); 
-               localStorage.setItem("gh-2" + a, d); 
-               count++; 
-               document.getElementById("myTable").rows[a].cells[0].textContent = 
-               localStorage.getItem("gh-1" + a); 
-               // Calculate total
-            
-               document.getElementById("myTable").rows[a].cells[1].textContent = 
-               localStorage.getItem("gh" + a); 
-               // Calculate total
-               document.getElementById("myTable").rows[a].cells[2].textContent = 
-               localStorage.getItem("gh-2" + a); 
-               sum = 0; // Reset sum 
-               for (var i = 0; i < 100; i++) 
-               { sum +=parseInt(localStorage.getItem("gh" + i)); }
-               localStorage.setItem("m", sum);
-               
-               document.getElementById("totalAmount").innerHTML = "Total Amount: " +
-               localStorage.getItem("m"); 
-               localStorage.setItem("p", count);
-               document.getElementById("a").value=localStorage.getItem("p"); 
-               document.getElementById("fruit").value="";
-               document.getElementById("num").value="";
-			   tableBody.rows[a].cells[0].scrollIntoView(); 
-               
-    }
+  count=localStorage.getItem("p"); 
+
+ var c=item.charAt(0).toUpperCase() + item.slice(1);; 
+var a = document.getElementById("a").value;
+var d=new Date().toLocaleString().slice(0,5);
+for(i=0;i<13;i++)
+{ // 5
+localStorage.setItem("k"+i,document.getElementById("kk").rows[i].cells[1].textContent)
+document.getElementById("kk").rows[i].cells[1].textContent=localStorage.getItem("k"+i);
+    } // 5
 
 
 
-               
+
+ var b = stock; 
+if (a < 0 || a >= 100) { 
+alert("Please enter a valid row number between 0 and 99."); 
+return; 
+}
+ localStorage.setItem("gh-1"+a,c)
+localStorage.setItem("gh-2"+a,d) 
+localStorage.setItem("gh" + a, b); 
+count++; 
+document.getElementById("myTable").rows[a].cells[0].textContent = localStorage.getItem("gh-1" + a)
+; // Calculate total 
+document.getElementById("myTable").rows[a].cells[1].textContent = localStorage.getItem("gh" + a); 
+// Calculate total
+document.getElementById("myTable").rows[a].cells[2].textContent = localStorage.getItem("gh-2" + a);  
+sum = 0; // Reset sum 
+for (var i = 0; i < 100; i++) 
+{
+ sum +=parseInt(localStorage.getItem("gh" + i));
+ }
+ localStorage.setItem("m", sum); 
+document.getElementById("totalAmount").innerHTML = "Total Amount: " + localStorage.getItem("m"); 
+localStorage.setItem("p", count);
+ document.getElementById("a").value=localStorage.getItem("p"); 
+document.getElementById("fruit").value=""; 
+		
+ tableBody.rows[a].cells[0].scrollIntoView(); 
+} // 11
+ 
+    } // 4
+} // 12
+ } // 3
 var sum = 0; // Generate 100 rows dynamically 
                var tableBody = document.getElementById("myTable").getElementsByTagName('tbody')[0];
                for (var i = 0; i < 100; i++) 
-               { var row = tableBody.insertRow(); 
+               { // 6
+var row = tableBody.insertRow(); 
                var cell1 = row.insertCell(0);
                var cell2 = row.insertCell(1); 
                var cell3 = row.insertCell(2); 
                cell1.textContent = localStorage.getItem("gh-1"+i);
-               cell2.textContent = localStorage.getItem("gh" + i) || 0; 
-// Default to 0 if not set 
-               cell3.textContent = localStorage.getItem("gh-2" + i)
-               } // Store amount in localStorage 
+               cell2.textContent = localStorage.getItem("gh" + i) || 0; // Default to 0 if not set 
+              cell3.textContent = localStorage.getItem("gh-2" + i) 
+               } // 6 Store amount in localStorage 
                count=0;
-                              
 
-               function storeAmount() 
-               
-               {                    
-               
-               }
-               document.getElementById("a").value=localStorage.getItem("p"); 
-         
-               document.getElementById("totalAmount").innerHTML = "Total Amount: " +
-               localStorage.getItem("m");  
-               // Reset localStorage and UI 
-               function resetStorage() 
-               { for (var i = 0; i < 100; i++) 
-               { localStorage.setItem("gh" + i, 0);
-               document.getElementById("myTable").rows[i].cells[1].textContent = 0;  
-               localStorage.setItem("gh-1" + i, "");
-               document.getElementById("myTable").rows[i].cells[0].textContent = ""; 
-localStorage.setItem("gh-2" + i, "");
-               document.getElementById("myTable").rows[i].cells[0].textContent = ""; 
-} 
-          localStorage.setItem("p",0); 
-          
-               localStorage.setItem("m", 1);
-               document.getElementById("totalAmount").innerHTML = "Total Amount:"+ 0; } 
-               
+ document.getElementById("a").value=localStorage.getItem("p"); 
+document.getElementById("totalAmount").innerHTML = "Total Amount: " + localStorage.getItem("m");
+ // Reset localStorage and UI 
+function resetStorage() 
+{ // 7
+ for (var i = 0; i < 100; i++) 
+{ // 8
+localStorage.setItem("gh" + i, 0);
+ document.getElementById("myTable").rows[i].cells[1].textContent = 0;
+ localStorage.setItem("gh-1" + i, ""); 
+document.getElementById("myTable").rows[i].cells[0].textContent = "";
+localStorage.setItem("gh-2" + i, ""); 
+document.getElementById("myTable").rows[i].cells[2].textContent = "";
+ } // 8
+localStorage.setItem("p",0);
+ localStorage.setItem("m", 1); 
+document.getElementById("totalAmount").innerHTML = "Total Amount:"+ 0;
+ } // 7
 </script>
 
 </body>
