@@ -1,47 +1,68 @@
-<!doctype html>
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Item Rate Display</title>
   <style>
-    table ,  td {
-     border:1px solid;
+    body {
+      font-family: Arial, sans-serif;
+      padding: 20px;
+    }
+    textarea {
+      width: 40%;
+      height: 120px;
+      font-size: 16px;
+      display: inline-block;
+      vertical-align: top;
+      margin-right: 10px;
+    }
+    pre {
+      width: 40%;
+      height: 100px;
+      font-size: 16px;
+      display: inline-block;
+      vertical-align: top;
+      margin-top: 5px;
+    }
+    #container {
+      display: flex;
+      gap: 10px;
     }
   </style>
-<p id="demo"></p>
-<table>
-  <tr>
-    <td>44</td>
-    <td>22</td>
-    <td>31</td>
-  </tr>
-</table>
-<script>
-function add()
-{
-  var numOne, numTwo, sum;
-  numOne = parseInt(document.getElementById("first").value);
-  numTwo = parseInt(document.getElementById("second").value);
-  sum = numTwo - numOne;
-  document.getElementById("answer").value = sum;
-const now = new Date();
-document.getElementById("date").value =now.toLocaleString().slice(0,10);
-}
-var x = localStorage.getItem("mytime");
-  document.getElementById("demo").innerHTML = x;
-
-</script>
 </head>
 <body>
+  <h2>Type Item Names (one per line)</h2>
+  <div id="container">
+    <textarea id="itemInput" placeholder="Enter item names..."></textarea>
+    <pre id="output"></pre>
+  </div>
+<p id="h"></p>
+  <script>
+    const itemRates = {
+      "apple": [30,1],
+      "banana": 10,
+      "mango": 50,
+      "grapes": 40
+    };
 
+    const input = document.getElementById('itemInput');
+    const output = document.getElementById('output');
 
-<form action="mailto:karthikkottekar@gmail.com" method="post" enctype="text/plain">
-
-<p>Date = <input type="text" id="date" name="date"></p>
-<p>Saled: <input type="text" id="first" name="first"></p>
-<p>total: <input type="text" id="second" name="second"></p>
-<button onclick="add()">Click</button>
-<p>Sum = <input type="text" id="answer" name="answer"></p>
-<input type="submit" value="Send">
-<input type="reset" value="1Reset">
-</form>
+    input.addEventListener('input', () => {
+      const lines = input.value.split('\n');
+      i=0
+      const results = lines.map(line => {
+        const item = line.trim().toLowerCase();
+        i+=itemRates[item][1]||0
+        return  itemRates[item]
+           
+      });
+      output.textContent = results.join('\n');
+      j=results[results.length-1]
+                document.getElementById("h").innerHTML=""+i
+      
+    });
+  </script>
 </body>
 </html>
