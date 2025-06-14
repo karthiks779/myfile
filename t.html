@@ -38,6 +38,7 @@
     <pre id="output"></pre>
   </div>
 <p id="h"></p>
+<script src="File1.js">
   <script>
     const itemRates = {
       "apple": [30,1],
@@ -54,8 +55,8 @@
       i=0
       const results = lines.map(line => {
         const item = line.trim().toLowerCase();
-        i+=itemRates[item][1]||0
-        return  itemRates[item]
+        i+=j[item][1]||0
+        return  j[item]
            
       });
       output.textContent = results.join('\n');
