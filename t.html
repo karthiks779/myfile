@@ -10,7 +10,7 @@
       padding: 20px;
     }
     textarea {
-      width: 40%;
+      width: 100%;
       height: 120px;
       font-size: 16px;
       display: inline-block;
@@ -25,45 +25,96 @@
       vertical-align: top;
       margin-top: 5px;
     }
+    #suggestions {
+      position: absolute;
+      background: #f9f9f9;
+      border: 1px solid #ccc;
+      max-width: 38%;
+      z-index: 10;
+      display: none;
+    }
+    #suggestions div {
+      padding: 5px;
+      cursor: pointer;
+    }
+    #suggestions div:hover {
+      background-color: #eaeaea;
+    }
     #container {
       display: flex;
       gap: 10px;
+      position: relative;
     }
   </style>
 </head>
 <body>
   <h2>Type Item Names (one per line)</h2>
   <div id="container">
-    <textarea id="itemInput" placeholder="Enter item names..."></textarea>
+    <div style="position: relative; width: 40%;">
+      <textarea id="itemInput" placeholder="Enter item names..."></textarea>
+      <div id="suggestions"></div>
+    </div>
     <pre id="output"></pre>
   </div>
-<p id="h"></p>
 <script src="file1.js"></script>
+<p id="g"></p>
   <script>
     const itemRates = {
-      "apple": [30,1],
+      "apple": 30,
       "banana": 10,
       "mango": 50,
-      "grapes": 40
+      "grapes": 40,
+      "orange": 25,
+      "kiwi": 60,
+      "pineapple": 45,
+      "ac":56
     };
 
     const input = document.getElementById('itemInput');
     const output = document.getElementById('output');
+    const suggestions = document.getElementById('suggestions');
 
     input.addEventListener('input', () => {
+        sum=0;
       const lines = input.value.split('\n');
-      i=0
       const results = lines.map(line => {
-        const item = line.trim().split("-")[0].replace(/^|\s+$/gm,'');
-        i+=j[item][0]*parseInt(line.replace(" ","").split("-")[1])||0
-        return  j[item]
-           
-      });
+        const item = line.split('-')[0].replace(/^\s+|\s+$/gm,'');
+       sum+=parseInt(j[item])*parseInt(line.trim().split('-')[1]);
+        return j[item]  });
       output.textContent = results.join('\n');
-      
-                document.getElementById("h").innerHTML=""+i
-      
+
+      // Show suggestions for current line
+      const currentLine = lines[lines.length - 1].trim();
+      if (currentLine.length === 0) {
+        suggestions.style.display = 'none';
+        return;
+      }
+      const matches = Object.keys(j).filter(item => item.startsWith(currentLine));
+      if (matches.length > 0) {
+        suggestions.innerHTML = matches.map(match => `<div>${match}</div>`).join('');
+        suggestions.style.display = 'block';
+      } else {
+        suggestions.style.display = 'none';
+      }
+      document.getElementById("g").innerHTML=sum
     });
+
+    suggestions.addEventListener('click', (e) => {
+      if (e.target.tagName === 'DIV') {
+        let lines = input.value.split('\n');
+        lines[lines.length - 1] = e.target.textContent;
+        input.value = lines.join('\n');
+        suggestions.style.display = 'none';
+        input.dispatchEvent(new Event('input'));
+      }
+    });
+
+    document.addEventListener('click', (e) => {
+      if (!suggestions.contains(e.target) && e.target !== input) {
+        suggestions.style.display = 'none';
+      }
+    });
+    
   </script>
 </body>
 </html>
