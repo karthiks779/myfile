@@ -54,7 +54,7 @@
       const lines = input.value.split('\n');
       i=0
       const results = lines.map(line => {
-        const item = line.trim().split("-")[0];
+        const item = line.trim().split("-")[0].replace(/^|\s+$/gm,'');
         i+=j[item][0]*parseInt(line.replace(" ","").split("-")[1])||0
         return  j[item]
            
