@@ -80,7 +80,7 @@
       const results = lines.map(line => {
         const item = line.split('-')[0].replace(/^\s+|\s+$/gm,'');
        sum+=parseInt(j[item])*parseInt(line.trim().split('-')[1]);
-        return j[item]  });
+        return [j[item],`total:${parseInt(j[item])*parseInt(line.trim().split('-')[1])}`] });
       output.textContent = results.join('\n');
 document.getElementById("g").innerHTML=sum;
       // Show suggestions for current line
