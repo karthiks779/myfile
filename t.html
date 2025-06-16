@@ -82,14 +82,14 @@
        sum+=parseInt(j[item])*parseInt(line.trim().split('-')[1]);
         return j[item]  });
       output.textContent = results.join('\n');
-
+document.getElementById("g").innerHTML=sum;
       // Show suggestions for current line
       const currentLine = lines[lines.length - 1].trim();
       if (currentLine.length === 0) {
         suggestions.style.display = 'none';
         return;
       }
-      const matches = Object.keys(j).filter(item => item.startsWith(currentLine));
+      const matches = Object.keys(j).filter(item => item.toLowerCase().startsWith(currentLine.toLowerCase()));
       if (matches.length > 0) {
         suggestions.innerHTML = matches.map(match => `<div>${match}</div>`).join('');
         suggestions.style.display = 'block';
