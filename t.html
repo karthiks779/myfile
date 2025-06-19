@@ -89,7 +89,7 @@ document.getElementById("g").innerHTML=sum;
         suggestions.style.display = 'none';
         return;
       }
-      const matches = Object.keys(j).filter(item => item.toLowerCase().startsWith(currentLine.toLowerCase()));
+      const matches = Object.keys(j).filter(item => item.toLowerCase().includes(currentLine.toLowerCase()));
       if (matches.length > 0) {
         suggestions.innerHTML = matches.map(match => `<div>${match}</div>`).join('');
         suggestions.style.display = 'block';
