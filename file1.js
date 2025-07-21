@@ -30,12 +30,12 @@ var j={"Hoppala":[22,35],"Hot Hoppala":[24,40],"Chicken Masala poweder hotel 500
 "Pavabhaji Masala 500gm":[230], "Butter Pannir Masala 100gms": [48], "Garam Masala Powder 100gms":[50,70],"Ragi Powder 400gms":[36],
 "Chicken Masala Powder 100gms":[56,70],"Vegetable Masala Powder 100gms":[48,100],"Elaine Black Pepper 500gms Ist":[290],"Coriander Powder 500gms":[80],
 "Gobi Manchuri Masala 500gms":[190],"Jeera Powder 500gms [ Hotel ]":[350, 245],"Samber Powder 500gms (Hotel)":[160],"Kasuri Methi 250gms":[90],
-"Bafat Powder 250gms":[140,175],"Beef Dry/curry Sukka Masala 250gms":[145],"Elaine Asafoetida(Hing) Paste 250gms":[175,300],"1k Chakra (papad)":[110], 
+"Bafat Powder 250gms":[140,175],"Beef Dry/curry Sukka Masala 250gms":[145,],"Elaine Asafoetida(Hing) Paste 250gms":[175,300],"1k Chakra (papad)":[110], 
 "Panipuri Masala 50gms":[28],"Kasuri Methi 25gms":[25,30],"Turmeric Powder 100gms":[50,35],"Coriander Powder 250gms":[,150],"Pepper Powder 250gms":[240,300],
- "Charmuri Masala 250gms":[83],"Chilly Powder 250gms":[60,150],"Bafat Powder 250gms":[,140],"Puliyogare Powder 100gms":[25,40],"Asafoetida (Hing) Powder 500gms (Hotel)":[275],
+ "Charmuri Masala 250gms":[83],"Chilly Powder 250gms":[60,150],"Bafat Powder 250gms":[,140],"Puliyogare Powder 100gms":[25,40],"Asafoetida (Hing) Powder 500gms (Hotel)":[275,300],
   "Chicken Pulimunchi 100gms":[70],"Samber Powder 100gms (Udupi)":[46,58],"Turmeric Powder 200gms (Hotel)":[48,100],"Turmeric powder 250gms (Hotel)":[55,125],
       "Chicken Masala Powder 200gms (Hotel)":[65,140],"Chicken Masala Powder 250gms (Hotel)":[70,175],"Jeera Powder 100gms":[60,90],"Garam Masala Powder 500gms(Hotel)":[135,300],
       "Pickel Powder 100gms":[36,45],"Stew Powder 100gms":[36,45],"Chicken Sukka masala 100gms":[56,70],"Biryani Masala 100gms":[64,80],"250gms noodles masala":[350,140],
       "Charmuri masala 500gms":[165,250],"Charmuri masala 80gms":[26,40],"Chilly powder 500gms":[120,300],"Vinegar [700ml]":[28,50],"Acetic acid 100ml":[15,25],
-      "Premium Chilly Powder 500gms":[300,150],"Hot Chilly Powder 500gms":[105,350],"Turmeric powder 500gms":[140,250]};
+       "Asafoetida (Hing) Powder 50gms":[35,50],"Premium Chilly Powder 500gms":[150,300],"Hot Chilly Powder 500gms":[105,350],"Turmeric powder 500gms":[140,250]};
  
