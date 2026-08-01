@@ -140,6 +140,12 @@ AI response appears here...
 // =======================
 // CANVAS BACKGROUND
 // =======================
+document.addEventListener('keydown', function(event) {
+        // Checks if the pressed key is "Enter"
+        if (event.key === 'n') {
+            window.location.reload(); // Reloads the current page
+        }
+    });
 
 const canvas =
 document.getElementById("bg");
