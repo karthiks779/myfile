@@ -145,7 +145,17 @@ document.addEventListener('keydown', function(event) {
             window.location.reload(); // Reloads the current page
         }
     });
-
+document.addEventListener('keydown', function(event) {
+    // Check if the pressed key is 'l' or 'L'
+    if (event.key.toLowerCase() === 'l') {
+        
+        // Prevent the default 'l' character from being typed into the box instantly
+        event.preventDefault(); 
+        
+        // Target your input box using its ID and focus on it
+        document.getElementById('prompt').focus();
+    }
+});
 const canvas =
 document.getElementById("bg");
 
