@@ -141,8 +141,14 @@ AI response appears here...
 // =======================
 document.addEventListener('keydown', function(event) {
         // Checks if the pressed key is "Enter"
-        if (event.key === 'n') {
-            window.location.reload(); // Reloads the current page
+        if (event.key === 's') {
+            sendMessage(); // Reloads the current page
+        }
+    });
+    document.addEventListener('keydown', function(event) {
+        // Checks if the pressed key is "Enter"
+        if (event.key === 't') {
+            toggle(); // Reloads the current page
         }
     });
 document.addEventListener('keydown', function(event) {
