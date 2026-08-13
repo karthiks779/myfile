@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -232,8 +231,7 @@ ctx.beginPath();
 ctx.arc(
 p.x,
 p.y,
-p.r,
-0,
+p.r,0,
 Math.PI*2
 );
 
@@ -322,7 +320,8 @@ let stopFlag=true;
 let skip=false;
 let back=false;
 
-let wordGap=400;
+// Initialize wordGap from the input value so the default is 400 ms
+let wordGap = +document.getElementById('normalGap')?.value || 400;
 let repeatLimit=1;
 
 const toggleBtn =
@@ -565,7 +564,7 @@ document.addEventListener(
 e=>{
 
 let k =
-e.key.toLowerCase();
+ e.key.toLowerCase();
 
 if(k==="k")
 next();
@@ -593,6 +592,7 @@ speechSynthesis.pause();
 
 if(/^[0-9]$/.test(k)){
 
+// keep existing behavior: numeric shortcuts set word gap (1 -> 1000ms, etc.)
 wordGap =
 parseInt(k)*1000;
 
