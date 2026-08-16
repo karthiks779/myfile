@@ -156,7 +156,8 @@ document.addEventListener('keydown', function(event) {
         
         // Prevent the default 'l' character from being typed into the box instantly
         event.preventDefault(); 
-        
+        document.getElementById('prompt').value='';
+    stop();
         // Target your input box using its ID and focus on it
         document.getElementById('prompt').focus();
     }
