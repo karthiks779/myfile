@@ -1,0 +1,615 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Puter AI + TTS Pro + Canvas</title>
+<button onclick="window.location.reload();">Refresh Page</button>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    font-family:Arial,sans-serif;
+    overflow:hidden;
+    background:#000;
+}
+
+#bg{
+    position:fixed;
+    inset:0;
+}
+
+.panel{
+    position:absolute;
+    top:50%;
+    left:50%;
+    transform:translate(-50%,-50%);
+    width:95%;
+    max-width:1000px;
+    max-height:95vh;
+    overflow:auto;
+    padding:20px;
+    border-radius:20px;
+    background:rgba(255,255,255,.12);
+    backdrop-filter:blur(12px);
+    color:white;
+}
+
+h2{
+    margin-bottom:15px;
+}
+
+textarea{
+    width:100%;
+    min-height:120px;
+    padding:12px;
+    border:none;
+    border-radius:10px;
+    resize:vertical;
+}
+
+#output{
+    margin-top:15px;
+    padding:15px;
+    min-height:180px;
+    border-radius:10px;
+    background:rgba(255,255,255,.1);
+    white-space:pre-wrap;
+}
+
+.controls{
+    display:flex;
+    flex-wrap:wrap;
+    gap:10px;
+    margin-top:10px;
+}
+
+button{
+    padding:10px 15px;
+    border:none;
+    border-radius:8px;
+    cursor:pointer;
+}
+
+input[type=number]{
+    width:80px;
+    padding:5px;
+}
+
+label{
+    display:flex;
+    align-items:center;
+    gap:5px;
+}
+</style>
+</head>
+<body>
+
+<canvas id="bg"></canvas>
+
+<div class="panel">
+
+<h2>Puter AI + TTS Pro</h2>
+<textarea
+id="prompt"
+placeholder="Ask AI anything..."></textarea>
+
+<div class="controls">
+<button onclick="sendMessage()">Send</button>
+<button id="toggleBtn" onclick="toggle()">Start TTS</button>
+<button onclick="next()">Next</button>
+<button onclick="prev()">Prev</button>
+<button onclick="clearAll()">Clear</button>
+</div>
+
+<div class="controls">
+
+<label>
+Word Gap
+<input id="normalGap" type="number" value="400">
+</label>
+
+<label>
+Sentence Gap
+<input id="sentenceGap" type="number" value="1200">
+</label>
+
+<label>
+Repeat
+<input id="repeatCount" type="number" value="2">
+</label>
+
+</div>
+
+<div id="output">
+AI response appears here...
+</div>
+
+</div>
+
+<script src="https://js.puter.com/v2/"></script>
+
+<script>
+// =======================
+// CANVAS BACKGROUND
+// ======================
+document.addEventListener('keydown', function(event) {
+        // Checks if the pressed key is "Enter"
+        if (event.key === 's') {
+            sendMessage(); // Reloads the current page
+        }
+    });
+    document.addEventListener('keydown', function(event) {
+        // Checks if the pressed key is "Enter"
+        if (event.key === 't') {
+            toggle(); // Reloads the current page
+        }
+    });
+document.addEventListener('keydown', function(event) {
+    // Check if the pressed key is 'l' or 'L'
+    if (event.key.toLowerCase() === 'l') {
+        
+        // Prevent the default 'l' character from being typed into the box instantly
+        event.preventDefault(); 
+        document.getElementById('prompt').value='';
+    stop();
+        // Target your input box using its ID and focus on it
+        document.getElementById('prompt').focus();
+    }
+});
+const canvas =
+document.getElementById("bg");
+
+const ctx =
+canvas.getContext("2d");
+
+function resize(){
+
+canvas.width =
+window.innerWidth;
+
+canvas.height =
+window.innerHeight;
+
+}
+
+resize();
+
+window.addEventListener(
+"resize",
+resize
+);
+
+const particles=[];
+
+for(let i=0;i<120;i++){
+
+particles.push({
+
+x:Math.random()*canvas.width,
+y:Math.random()*canvas.height,
+
+dx:(Math.random()-.5)*1.5,
+dy:(Math.random()-.5)*1.5,
+
+r:Math.random()*3+1
+
+});
+
+}
+
+function animate(){
+
+ctx.clearRect(
+0,
+0,
+canvas.width,
+canvas.height
+);
+
+particles.forEach(p=>{
+
+p.x+=p.dx;
+p.y+=p.dy;
+
+if(
+p.x<0||
+p.x>canvas.width
+)p.dx*=-1;
+
+if(
+p.y<0||
+p.y>canvas.height
+)p.dy*=-1;
+
+ctx.beginPath();
+
+ctx.arc(
+p.x,
+p.y,
+p.r,0,
+Math.PI*2
+);
+
+ctx.fillStyle="white";
+
+ctx.fill();
+
+});
+
+requestAnimationFrame(
+animate
+);
+
+}
+
+animate();
+
+// =======================
+// PUTER AI
+// =======================
+
+async function sendMessage(){
+
+const prompt =
+document.getElementById(
+"prompt"
+).value.trim();
+
+if(!prompt) return;
+
+const output =
+document.getElementById(
+"output"
+);
+
+output.textContent =
+"Thinking...";
+
+try{
+
+const response =
+await puter.ai.chat(
+prompt,
+{
+stream:true,
+model:"gpt-5.4-nano"
+}
+);
+
+output.textContent="";
+
+for await(
+const part
+of response
+){
+
+output.textContent +=
+part?.text || "";
+
+}
+
+prepareTTS(
+output.textContent
+);
+
+}catch(err){
+
+output.textContent =
+"Error: " +
+err.message;
+
+}
+start();
+
+}
+
+// =======================
+// TTS PRO
+// =======================
+
+let sentences=[];
+let i=0;
+let repeat=0;
+
+let stopFlag=true;
+let skip=false;
+let back=false;
+
+// Initialize wordGap from the input value so the default is 400 ms
+let wordGap = +document.getElementById('normalGap')?.value || 400;
+let repeatLimit=1;
+
+const toggleBtn =
+document.getElementById(
+"toggleBtn"
+);
+
+function prepareTTS(text){
+
+sentences =
+text.match(
+/[^.!?]+[.!?]*/g
+) || [text];
+
+i=0;
+repeat=0;
+
+}
+
+function toggle(){
+
+if(stopFlag){
+start();
+}else{
+stop();
+}
+
+}
+
+function start(){
+
+if(sentences.length===0)
+return;
+
+stopFlag=false;
+
+skip=false;
+back=false;
+
+wordGap =
++document.getElementById(
+"normalGap"
+).value || 400;
+
+repeatLimit =
++document.getElementById(
+"repeatCount"
+).value || 1;
+
+toggleBtn.innerText =
+"Stop TTS";
+
+speechSynthesis.cancel();
+
+run();
+
+}
+
+function run(){
+
+if(stopFlag) return;
+
+if(i<0) i=0;
+
+if(i>=sentences.length){
+
+stop();
+
+i=0;
+
+return;
+
+}
+
+let words =
+sentences[i]
+.trim()
+.split(/\s+/);
+
+let w=0;
+
+function speakWord(){
+
+if(stopFlag)
+return;
+
+if(skip){
+
+skip=false;
+
+repeat=0;
+
+i++;
+
+run();
+
+return;
+
+}
+
+if(back){
+
+back=false;
+
+repeat=0;
+
+i--;
+
+run();
+
+return;
+
+}
+
+if(w>=words.length){
+
+repeat++;
+
+const sg =
++document
+.getElementById(
+"sentenceGap"
+)
+.value || 1200;
+
+if(
+repeat <
+repeatLimit
+){
+
+setTimeout(
+()=>{
+w=0;
+speakWord();
+},
+sg
+);
+
+}else{
+
+repeat=0;
+
+i++;
+
+setTimeout(
+run,
+sg
+);
+
+}
+
+return;
+
+}
+
+let utter =
+new SpeechSynthesisUtterance(
+words[w++]
+);
+
+utter.onend=()=>{
+
+setTimeout(
+speakWord,
+wordGap
+);
+
+};
+
+utter.onerror=()=>{
+
+setTimeout(
+speakWord,
+wordGap
+);
+
+};
+
+speechSynthesis.speak(
+utter
+);
+
+}
+
+speakWord();
+
+}
+
+function stop(){
+
+stopFlag=true;
+
+speechSynthesis.cancel();
+
+toggleBtn.innerText =
+"Start TTS";
+
+}
+
+function next(){
+
+skip=true;
+
+speechSynthesis.cancel();
+
+}
+
+function prev(){
+
+back=true;
+
+speechSynthesis.cancel();
+
+}
+
+function clearAll(){
+
+document.getElementById(
+"prompt"
+).value="";
+
+document.getElementById(
+"output"
+).textContent="";
+
+sentences=[];
+
+i=0;
+
+stop();
+
+}
+
+// =======================
+// SHORTCUTS
+// =======================
+
+document.addEventListener(
+"keydown",
+e=>{
+
+let k =
+ e.key.toLowerCase();
+
+if(k==="k")
+next();
+
+if(k==="j")
+prev();
+
+if(k===" "){
+
+e.preventDefault();
+
+if(
+speechSynthesis.paused
+){
+
+speechSynthesis.resume();
+
+}else{
+
+speechSynthesis.pause();
+
+}
+
+}
+
+if(/^[0-9]$/.test(k)){
+
+// keep existing behavior: numeric shortcuts set word gap (1 -> 1000ms, etc.)
+wordGap =
+parseInt(k)*1000;
+
+}
+
+}
+);
+
+window.addEventListener(
+"beforeunload",
+e=>{
+e.preventDefault();
+e.returnValue="";
+}
+);
+</script>
+
+</body>
+</html>
