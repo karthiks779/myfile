@@ -105,6 +105,7 @@ placeholder="Ask AI anything..."></textarea>
 <button onclick="next()">Next</button>
 <button onclick="prev()">Prev</button>
 <button onclick="prevWords(4)">Prev 4 Words</button>
+<button onclick="nextWords(4)">Next 4 Words</button>
 <button onclick="clearAll()">Clear</button>
 </div>
 
@@ -319,6 +320,50 @@ function prevWords(n){
     run();
 }
 
+// Move forward N words (default 4). Works across sentence boundaries.
+function nextWords(n){
+    if(typeof n !== 'number') n = 4;
+    if(sentences.length === 0) return;
+    // cancel current speech and compute new indices
+    speechSynthesis.cancel();
+    stopFlag=false;
+    let remaining = n;
+    let i = currentSentenceIndex;
+    let j = currentWordIndex;
+
+    while(remaining > 0 && i < sentences.length){
+        let arr = sentences[i] ? sentences[i].trim().split(/\s+/) : [];
+        let available = arr.length - j;
+        if(available > remaining){
+            j += remaining;
+            remaining = 0;
+            break;
+        } else {
+            remaining -= available;
+            i++;
+            j = 0;
+        }
+    }
+
+    if(i >= sentences.length){
+        // reached the end: clamp to last sentence end and stop
+        currentSentenceIndex = Math.max(0, sentences.length - 1);
+        currentWordIndex = sentences[currentSentenceIndex] ? sentences[currentSentenceIndex].trim().split(/\s+/).length : 0;
+        stopFlag = true;
+        toggleBtn.innerText = "Start TTS";
+        return;
+    }
+
+    currentSentenceIndex = i;
+    currentWordIndex = j;
+
+    // Update gaps/repeat and resume speaking from new position
+    wordGap = +document.getElementById('normalGap').value || 400;
+    repeatLimit = +document.getElementById('repeatCount').value || 1;
+    toggleBtn.innerText = "Stop TTS";
+    run();
+}
+
 function clearAll(){
     document.getElementById("prompt").value="";
     document.getElementById("output").textContent="";
@@ -338,6 +383,10 @@ document.addEventListener("keydown", e=>{
       stop();
         e.preventDefault();
         prevWords(4);
+    }
+    if(k==="f"){ // forward 4 words
+        e.preventDefault();
+        nextWords(4);
     }
     if(k===" "){
         e.preventDefault();
