@@ -140,6 +140,19 @@ AI response appears here...
 // =======================
 // CANVAS BACKGROUND
 // =======================
+    
+    // 1. Push a dummy state into the history stack as soon as the page loads
+    history.pushState(null, document.title, location.href);
+
+    // 2. Listen for the user hitting the back button (popstate event)
+    window.addEventListener('popstate', function (event) {
+        // 3. Immediately force a refresh of the current page
+        window.location.reload();
+        
+        // 4. Re-push the dummy state to keep the loop active for the next back click
+        history.pushState(null, document.title, location.href);
+    });
+
 document.addEventListener('keydown', function(event) {
         // 's' to send
         if (event.key === 's') {
