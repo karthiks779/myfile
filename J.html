@@ -556,6 +556,35 @@ stop();
 
 }
 
+async function copyAiAnswer(){
+    const output = document.getElementById("output");
+    const text = output.textContent.trim();
+
+    if (!text || text === "AI response appears here..." || text === "Thinking...") return;
+
+    try {
+        await navigator.clipboard.writeText(text);
+        const original = output.textContent;
+        output.textContent = "Copied AI answer to clipboard";
+        setTimeout(() => {
+            if (output.textContent === "Copied AI answer to clipboard") {
+                output.textContent = original;
+            }
+        }, 1200);
+    } catch (err) {
+        const helper = document.createElement("textarea");
+        helper.value = text;
+        document.body.appendChild(helper);
+        helper.select();
+        try {
+            document.execCommand("copy");
+        } catch (copyErr) {
+            console.error("Copy failed:", copyErr);
+        }
+        document.body.removeChild(helper);
+    }
+}
+
 // =======================
 // SHORTCUTS
 // =======================
@@ -572,6 +601,11 @@ next();
 
 if(k==="j")
 prev();
+
+if(k==="b"){
+    e.preventDefault();
+    copyAiAnswer();
+}
 
 if(k===" "){
 
